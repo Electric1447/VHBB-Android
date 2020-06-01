@@ -26,6 +26,7 @@ import java.util.Locale;
 
 import eparon.vhbb_android.MainActivity;
 import eparon.vhbb_android.R;
+import eparon.vhbb_android.Utils.NetworkUtils;
 
 public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHolder> {
 
@@ -65,6 +66,10 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         holder.mDownload.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                 Toast.makeText(v.getContext(), "Storage permission not granted", Toast.LENGTH_LONG).show();
+                return;
+            }
+            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
+                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
                 return;
             }
 

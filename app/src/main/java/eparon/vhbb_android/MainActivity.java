@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 
 import eparon.vhbb_android.Constants.VitaDB;
+import eparon.vhbb_android.Utils.NetworkUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+
+        if (!NetworkUtils.isNetworkAvailable(getApplicationContext()))
+            Toast.makeText(this, "Network not available", Toast.LENGTH_SHORT).show();
     }
 
     @Override

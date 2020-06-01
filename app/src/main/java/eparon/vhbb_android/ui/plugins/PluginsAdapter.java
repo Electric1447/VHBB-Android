@@ -64,6 +64,10 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
                 Toast.makeText(v.getContext(), "Storage permission not granted", Toast.LENGTH_LONG).show();
                 return;
             }
+            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
+                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
             Uri uri = Uri.parse(urlID);
@@ -77,8 +81,10 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
                     filename = nameID + fileEx;
             }
 
-            if (filename.equals(""))
+            if (filename.equals("")) {
+                Toast.makeText(v.getContext(), "Error while downloading plugin", Toast.LENGTH_LONG).show();
                 return;
+            }
 
             DownloadManager.Request request = new DownloadManager.Request(uri)
                     .setTitle(v.getContext().getString(R.string.app_name))
