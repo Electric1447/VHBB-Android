@@ -10,7 +10,7 @@
     android:layout_marginBottom="@dimen/homebrew_padding_medium"
     android:background="@color/colorPrimary"
     app:cardCornerRadius="@dimen/homebrew_padding_medium"
-    tools:ignore="RtlHardcoded,RtlSymmetry,ContentDescription">
+    tools:ignore="RtlHardcoded,RtlSymmetry,ContentDescription,HardcodedText">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -62,9 +62,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview_name"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/textview_downloads"
+            android:maxLines="1"
+            android:paddingRight="4dp"
             android:text="Author: "
             android:textSize="14sp"
-            android:tint="@color/colorAccent" />
+            android:tint="@color/colorAccent"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform" />
 
         <TextView
             android:id="@+id/textview_desc"
