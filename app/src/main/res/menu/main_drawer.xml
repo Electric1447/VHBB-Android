@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_homebrew"
+            android:icon="@drawable/ic_menu_homebrew_24dp"
+            android:title="@string/menu_homebrew" />
+
+        <item
+            android:id="@+id/nav_plugins"
+            android:icon="@drawable/ic_menu_plugins_24dp"
+            android:title="@string/menu_plugins" />
+
+    </group>
+
+    <group android:id="@+id/menu_group_about">
+
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/menu_settings" />
+
+        <item
+            android:id="@+id/nav_vitadb"
+            android:title="@string/menu_vitadb" />
+
+        <item
+            android:id="@+id/nav_github"
+            android:title="@string/menu_source_code" />
+
+    </group>
+
+</menu>

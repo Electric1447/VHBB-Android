@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VHBB Android</string>
+
+    <string name="nav_header_subtitle">Created by Itai Levin (Electric1447)</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_homebrew">Homebrew</string>
+    <string name="menu_plugins">Plugins</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_vitadb">VitaDB</string>
+    <string name="menu_source_code">Source Code</string>
+
+    <string name="about">About</string>
+</resources>

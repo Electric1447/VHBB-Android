@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/app_name"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="placeholder"
+            android:summary="placeholder"
+            android:title="placeholder"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/about"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="about"
+            android:summary="@string/app_name"
+            android:title="@string/about"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="vitadb"
+            android:title="@string/menu_vitadb"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="github"
+            android:title="@string/menu_source_code"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
