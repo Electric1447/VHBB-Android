@@ -2,7 +2,8 @@
 VitaDB client for Android
 
 ### Features:
-- See all homebrew & plugins from VitaDB.
+- See all homebrew from VitaDB.
+- Custom plugin database containing 95% of all vita plugins
 - Download homebrew & plugins to your Android device.
 
 ### Requirements:
