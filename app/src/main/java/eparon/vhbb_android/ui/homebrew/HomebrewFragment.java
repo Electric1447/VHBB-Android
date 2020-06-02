@@ -71,8 +71,8 @@ public class HomebrewFragment extends Fragment {
                             mHomebrewList.add(new HomebrewItem(name, iconUrl, version, author, description, longDescription, date, sourceUrl, releaseUrl, url, dataUrl, id, downloads, size, dataSize));
                         }
 
-                        mHomebrewAdapter = new HomebrewAdapter(mHomebrewList);
-                        mRecyclerView.setAdapter(mHomebrewAdapter);;
+                        mHomebrewAdapter = new HomebrewAdapter(requireActivity(), mHomebrewList);
+                        mRecyclerView.setAdapter(mHomebrewAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

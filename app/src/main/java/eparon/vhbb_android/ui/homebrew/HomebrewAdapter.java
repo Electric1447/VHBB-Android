@@ -1,6 +1,7 @@
 package eparon.vhbb_android.ui.homebrew;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,15 +24,17 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import eparon.vhbb_android.MainActivity;
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.NetworkUtils;
+import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHolder> {
 
+    private Activity mActivity;
     private ArrayList<HomebrewItem> mHomebrewList;
 
-    public HomebrewAdapter (ArrayList<HomebrewItem> homebrewList) {
+    public HomebrewAdapter (Activity activity, ArrayList<HomebrewItem> homebrewList) {
+        mActivity = activity;
         mHomebrewList = homebrewList;
     }
 
@@ -64,10 +66,9 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         Picasso.get().load(iconID).fit().centerInside().into(holder.mIcon);
 
         holder.mDownload.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                Toast.makeText(v.getContext(), "Storage permission not granted", Toast.LENGTH_LONG).show();
-                return;
-            }
+            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                PermissionUtils.requestStoragePermission(mActivity);
+
             if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
                 Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
                 return;
@@ -79,9 +80,9 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             String filename = nameID + ".vpk";
 
             DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(v.getContext().getString(R.string.app_name))
-                    .setDescription(String.format("Downloading %s", filename))
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+                    .setTitle(filename)
+                    .setDescription("Downloading...")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                     .setVisibleInDownloadsUi(true)
                     .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
 

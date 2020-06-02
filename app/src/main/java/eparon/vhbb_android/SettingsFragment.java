@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import eparon.vhbb_android.Constants.VitaDB;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -22,7 +23,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference mGithubPreference = getPreferenceManager().findPreference("github");
         assert mGithubPreference != null;
         mGithubPreference.setOnPreferenceClickListener(preference -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MainActivity.sourcecodeURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(VitaDB.PARENT_URL)));
             return true;
         });
     }

@@ -20,8 +20,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import eparon.vhbb_android.Constants.VHBBAndroid;
 import eparon.vhbb_android.R;
-import eparon.vhbb_android.Constants.VitaDB;
 
 public class PluginsFragment extends Fragment {
 
@@ -46,30 +46,24 @@ public class PluginsFragment extends Fragment {
     }
 
     private void jsonParse () {
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, VitaDB.PLUGIN_LIST_JSON_URL, null,
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, VHBBAndroid.PLUGIN_LIST_JSON_URL, null,
                 response -> {
                     try {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject item = response.getJSONObject(i);
 
-                            String name = item.getString(VitaDB.JSON_NAME);
-                            String version = item.getString(VitaDB.JSON_VERSION);
-                            String author = item.getString(VitaDB.JSON_AUTHOR);
-                            String description = item.getString(VitaDB.JSON_DESCRIPTION);
-                            String longDescription = item.getString(VitaDB.JSON_LONG_DESCRIPTION);
-                            String date = item.getString(VitaDB.JSON_DATE);
-                            String sourceUrl = item.getString(VitaDB.JSON_SOURCE);
-                            String releaseUrl = item.getString(VitaDB.JSON_RELEASE_PAGE);
-                            String url = item.getString(VitaDB.JSON_URL);
-                            int id = item.getInt(VitaDB.JSON_ID);
-                            int downloads = item.getInt(VitaDB.JSON_DOWNLOADS);
-                            long size = item.getLong(VitaDB.JSON_SIZE);
+                            String name = item.getString(VHBBAndroid.JSON_NAME);
+                            String filename = item.getString(VHBBAndroid.JSON_FILENAME);
+                            String version = item.getString(VHBBAndroid.JSON_VERSION);
+                            String author = item.getString(VHBBAndroid.JSON_AUTHOR);
+                            String description = item.getString(VHBBAndroid.JSON_DESCRIPTION);
+                            String url = item.getString(VHBBAndroid.JSON_URL);
 
-                            mPluginsList.add(new PluginsItem(name, version, author, description, longDescription, date, sourceUrl, releaseUrl, url, id, downloads, size));
+                            mPluginsList.add(new PluginsItem(name, filename, version, author, description, url));
                         }
 
-                        mPluginsAdapter = new PluginsAdapter(mPluginsList);
-                        mRecyclerView.setAdapter(mPluginsAdapter);;
+                        mPluginsAdapter = new PluginsAdapter(requireActivity(), mPluginsList);
+                        mRecyclerView.setAdapter(mPluginsAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

@@ -1,7 +1,9 @@
 package eparon.vhbb_android;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -19,12 +22,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
+import eparon.vhbb_android.Constants.VHBBAndroid;
 import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.Utils.NetworkUtils;
+import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String sourcecodeURL = "https://github.com/Electric1447";
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -59,14 +62,15 @@ public class MainActivity extends AppCompatActivity {
         });
         MenuItem navSourceCodeItem = navigationView.getMenu().findItem(R.id.nav_github);
         navSourceCodeItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(sourcecodeURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(VHBBAndroid.BASE_URL)));
             return true;
         });
 
-        ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-
         if (!NetworkUtils.isNetworkAvailable(getApplicationContext()))
             Toast.makeText(this, "Network not available", Toast.LENGTH_SHORT).show();
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+            PermissionUtils.requestStoragePermission(this);
     }
 
     @Override

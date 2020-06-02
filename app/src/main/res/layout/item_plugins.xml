@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@id/textview_date"
             android:maxLines="1"
             android:text="@string/app_name"
             android:textColor="@color/textColorTitle"
@@ -36,36 +35,12 @@
             app:autoSizeTextType="uniform" />
 
         <TextView
-            android:id="@+id/textview_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="4dp"
-            android:text="(04-20-2020)"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/textview_downloads"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textview_date"
-            android:layout_alignParentRight="true"
-            android:paddingTop="2dp"
-            android:text="42060 DLs"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp" />
-
-        <TextView
             android:id="@+id/textview_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview_name"
             android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@id/textview_downloads"
             android:maxLines="1"
-            android:paddingRight="4dp"
             android:text="Author: "
             android:textSize="14sp"
             android:tint="@color/colorAccent"
