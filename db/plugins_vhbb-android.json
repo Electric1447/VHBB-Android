@@ -108,7 +108,7 @@
 		"filename": "custom_warning.suprx",
 		"version": "v2",
 		"author": "TheOfficialFloW",
-		"description": "",
+		"description": "Customize Warning screen on startup",
 		"url": "https://github.com/TheOfficialFloW/VitaTweaks/releases/download/CustomWarning/custom_warning.suprx"
 	},
 	{
@@ -280,6 +280,14 @@
 		"url": "https://bitbucket.org/SilicaAndPina/makepsmgreatagain/downloads/MakePsmGreatAgain-v1.5.suprx"
 	},
 	{
+		"name": "MiniVitaTV",
+		"filename": "minivitatv.zip",
+		"version": "beta 4",
+		"author": "TheOfficialFloW",
+		"description": "Connect up to 4 DS3/DS4 to your PSVITA",
+		"url": "https://drive.google.com/uc?export=download&id=11CroOFKOh09hJmPL0IiKezVs-BJ-OUE-"
+	},
+	{
 		"name": "Monaural",
 		"filename": "monaural.skprx",
 		"version": "v1.0.0",
@@ -348,7 +356,7 @@
 		"filename": "NoPowerLimits.skprx",
 		"version": "v1.1",
 		"author": "Electry",
-		"description": "",
+		"description": "Removes some restrictions with power modes",
 		"url": "https://raw.githubusercontent.com/Electry/NoPowerLimitsVita/master/README.md"
 	},
 	{
@@ -356,7 +364,7 @@
 		"filename": "nopsmdrm.skprx",
 		"version": "v1.4",
 		"author": "frangarcj",
-		"description": "",
+		"description": "Bypass DRM on PSM contents",
 		"url": "https://raw.githubusercontent.com/frangarcj/NoPsmDrm/master/README.md"
 	},
 	{
