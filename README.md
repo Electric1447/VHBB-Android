@@ -9,3 +9,6 @@ VitaDB client for Android
 ### Requirements:
 - Android device running Android 5.0 Lolipop or higher.
 - Internet connection
+
+## Screenshots
+<img src="screenshots/Screenshot_1591179963.png" width="400"> &nbsp; <img src="screenshots/Screenshot_1591179972.png" width="400"> &nbsp; <img src="screenshots/Screenshot_1591179968.png" width="400">
