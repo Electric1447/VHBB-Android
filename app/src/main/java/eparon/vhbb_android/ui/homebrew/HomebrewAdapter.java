@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,10 +34,12 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
 
     private Activity mActivity;
     private ArrayList<HomebrewItem> mHomebrewList;
+    private ArrayList<HomebrewItem> mHomebrewListFull;
 
     public HomebrewAdapter (Activity activity, ArrayList<HomebrewItem> homebrewList) {
-        mActivity = activity;
-        mHomebrewList = homebrewList;
+        this.mActivity = activity;
+        this.mHomebrewList = homebrewList;
+        this.mHomebrewListFull = new ArrayList<>(mHomebrewList);
     }
 
     @NonNull
@@ -148,5 +151,42 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             mIcon = itemView.findViewById(R.id.image);
         }
     }
+
+    //region Filter
+
+    public Filter getFilter () {
+        return mFilter;
+    }
+
+    private Filter mFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering (CharSequence constraint) {
+            ArrayList<HomebrewItem> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(mHomebrewListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (HomebrewItem item : mHomebrewListFull)
+                    if (item.getName().toLowerCase().contains(filterPattern))
+                        filteredList.add(item);
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults (CharSequence constraint, FilterResults results) {
+            mHomebrewList.clear();
+            //noinspection unchecked
+            mHomebrewList.addAll((ArrayList<HomebrewItem>)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    //endregion
 
 }

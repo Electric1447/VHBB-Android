@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +29,12 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
 
     private Activity mActivity;
     private ArrayList<PluginsItem> mPluginsList;
+    private ArrayList<PluginsItem> mPluginsListFull;
 
     public PluginsAdapter (Activity activity, ArrayList<PluginsItem> pluginsList) {
-        mActivity = activity;
-        mPluginsList = pluginsList;
+        this.mActivity = activity;
+        this.mPluginsList = pluginsList;
+        this.mPluginsListFull = new ArrayList<>(mPluginsList);
     }
 
     @NonNull
@@ -97,5 +100,42 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
             mDownload = itemView.findViewById(R.id.download);
         }
     }
+
+    //region Filter
+
+    public Filter getFilter () {
+        return mFilter;
+    }
+
+    private Filter mFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering (CharSequence constraint) {
+            ArrayList<PluginsItem> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(mPluginsListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (PluginsItem item : mPluginsListFull)
+                    if (item.getName().toLowerCase().contains(filterPattern))
+                        filteredList.add(item);
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults (CharSequence constraint, FilterResults results) {
+            mPluginsList.clear();
+            //noinspection unchecked
+            mPluginsList.addAll((ArrayList<PluginsItem>)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    //endregion
 
 }
