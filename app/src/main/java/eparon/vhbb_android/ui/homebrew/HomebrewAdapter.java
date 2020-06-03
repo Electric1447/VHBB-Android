@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +58,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         String dateID = currentItem.getDateString();
         int downloadsID = currentItem.getDownloads();
         String urlID = currentItem.getUrl();
+        String dataUrlID = currentItem.getDataUrl();
 
         holder.mTitle.setText(String.format("%s %s", nameID, versionID));
         holder.mAuthor.setText(authorID);
@@ -89,6 +91,39 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             assert downloadmanager != null;
             downloadmanager.enqueue(request);
         });
+
+        holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)holder.mDescription.getLayoutParams();
+        lp.setMargins(0,
+                (int)mActivity.getResources().getDimension(R.dimen.homebrew_padding_small),
+                (int)mActivity.getResources().getDimension(!dataUrlID.equals("") ? R.dimen.homebrew_desc_margin_sec : R.dimen.homebrew_desc_margin_def),
+                0);
+        holder.mDescription.setLayoutParams(lp);
+
+        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                PermissionUtils.requestStoragePermission(mActivity);
+
+            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
+                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+            Uri uri = Uri.parse(dataUrlID);
+
+            String filename = dataUrlID.substring(dataUrlID.lastIndexOf("/") + 1);
+
+            DownloadManager.Request request = new DownloadManager.Request(uri)
+                    .setTitle(filename)
+                    .setDescription("Downloading...")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setVisibleInDownloadsUi(true)
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+
+            assert downloadmanager != null;
+            downloadmanager.enqueue(request);
+        });
     }
 
     @Override
@@ -98,7 +133,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTitle, mAuthor, mDescription, mDate, mDownloads;
-        public ImageButton mDownload;
+        public ImageButton mDownload, mDownloadData;
         public ImageView mIcon;
 
         public ViewHolder (View itemView) {
@@ -109,6 +144,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             mDate = itemView.findViewById(R.id.textview_date);
             mDownloads = itemView.findViewById(R.id.textview_downloads);
             mDownload = itemView.findViewById(R.id.download);
+            mDownloadData = itemView.findViewById(R.id.downloadData);
             mIcon = itemView.findViewById(R.id.image);
         }
     }
