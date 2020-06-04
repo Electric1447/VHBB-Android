@@ -13,4 +13,4 @@ VitaDB client for Android
 - Internet connection
 
 ## Screenshots
-<img src="screenshots/Screenshot_1591179963.png" width="400"> &nbsp; <img src="screenshots/Screenshot_1591179972.png" width="400"> &nbsp; <img src="screenshots/Screenshot_1591179968.png" width="400">
+<img src="screenshots/screenshot_homebrew.png" width="400"> &nbsp; <img src="screenshots/screenshot_plugins.png" width="400"> &nbsp; <img src="screenshots/screenshot_customrepo.png" width="400">  &nbsp; <img src="screenshots/screenshot_drawer.png" width="400">
