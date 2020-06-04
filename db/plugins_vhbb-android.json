@@ -104,6 +104,14 @@
 		"url": "https://github.com/Princess-of-Sleeping/PSP2-CustomBootSplash/releases/download/v1.0/custom_boot_splash.skprx"
 	},
 	{
+		"name": "Custom Boot Splash BMP",
+		"filename": "custom_boot_splash.skprx",
+		"version": "v2.0",
+		"author": "teakhanirons",
+		"description": "Custom boot logo plugin that uses normal BMP files",
+		"url": "https://github.com/teakhanirons/Vita-CustomBootSplashBMP/releases/download/2.0/custom_boot_splash.skprx"
+	},
+	{
 		"name": "Custom Warning (VitaTweaks)",
 		"filename": "custom_warning.suprx",
 		"version": "v2",
