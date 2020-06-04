@@ -6,32 +6,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import eparon.vhbb_android.BaseItem;
 import eparon.vhbb_android.Constants.VitaDB;
 
-public class HomebrewItem {
+public class HomebrewItem extends BaseItem {
 
-    private String Name;
     private String IconUrl;
-    private String Version;
-    private String Author;
-    private String Description, LongDescription;
+    private String LongDescription;
     private String SourceUrl, ReleaseUrl;
-    private String Url, DataUrl;
+    private String DataUrl;
     private int ID;
     private int Downloads;
     private long Size, DataSize;
     private Date Date;
 
     public HomebrewItem (String name, String iconUrl, String version, String author, String desc, String longDesc, String date, String srcUrl, String relUrl, String url, String dataUrl, int id, int downloads, long size, long dataSize) {
-        this.Name = name;
+        super(name, "", version, author, desc, url);
         this.IconUrl = String.format("%s%s", VitaDB.ICONS_PARENT_URL, iconUrl);
-        this.Version = version;
-        this.Author = author;
-        this.Description = desc;
         this.LongDescription = longDesc;
         this.SourceUrl = srcUrl;
         this.ReleaseUrl = relUrl;
-        this.Url = url;
         this.DataUrl = dataUrl;
         this.ID = id;
         this.Downloads = downloads;
@@ -40,24 +34,8 @@ public class HomebrewItem {
         this.setDate(date);
     }
 
-    public String getName () {
-        return Name;
-    }
-
     public String getIconUrl () {
         return IconUrl;
-    }
-
-    public String getVersion () {
-        return Version;
-    }
-
-    public String getAuthor () {
-        return Author;
-    }
-
-    public String getDescription() {
-        return Description;
     }
 
     public String getLongDescription () {
@@ -70,10 +48,6 @@ public class HomebrewItem {
 
     public String getReleaseUrl () {
         return ReleaseUrl;
-    }
-
-    public String getUrl () {
-        return Url;
     }
 
     public String getDataUrl () {

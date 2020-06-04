@@ -1,53 +1,22 @@
 package eparon.vhbb_android.ui.customrepo;
 
-public class CustomRepoItem {
+import eparon.vhbb_android.BaseItem;
 
-    private String Name;
-    private String Filename, DataFilename;
-    private String Version;
-    private String Author;
-    private String Description;
-    private String Url, DataUrl;
+public class CustomRepoItem extends BaseItem {
+
+    private String DataFilename;
+    private String DataUrl;
     private String Date;
 
     public CustomRepoItem (String name, String filename, String dataFilename, String version, String author, String desc, String url, String dataUrl, String date) {
-        this.Name = name;
-        this.Filename = filename;
+        super(name, filename, version, author, desc, url);
         this.DataFilename = dataFilename;
-        this.Version = version;
-        this.Author = author;
-        this.Description = desc;
-        this.Url = url;
         this.DataUrl = dataUrl;
         this.Date = date;
     }
 
-    public String getName () {
-        return Name;
-    }
-
-    public String getFilename () {
-        return Filename;
-    }
-
     public String getDataFilename () {
         return DataFilename;
-    }
-
-    public String getVersion () {
-        return Version;
-    }
-
-    public String getAuthor () {
-        return Author;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public String getUrl () {
-        return Url;
     }
 
     public String getDataUrl () {
