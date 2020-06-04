@@ -736,6 +736,14 @@
 		"url": "https://github.com/Freakler/vita-macspoofer/releases/download/1.0/macspoofer.suprx"
 	},
 	{
+		"name": "VitaPresence",
+		"filename": "VitaPresence.skprx",
+		"version": "v1.0.0",
+		"author": "Electry",
+		"description": "Change games resolution/FPS cap.",
+		"url": "https://github.com/Electry/VitaPresence/releases/download/v1.0.0/VitaPresence.skprx"
+	},
+	{
 		"name": "vita-ps4linkcontrols",
 		"filename": "ps4linkcontrols.suprx",
 		"version": "r7",
@@ -758,6 +766,14 @@
 		"author": "cuevavirus",
 		"description": "Plugin for automatic volume level switching",
 		"url": "https://forum.devchroma.nl/index.php?action=dlattach;topic=46.0;attach=54"
+	},
+	{
+		"name": "Watermark Disabler",
+		"filename": "watermarkdisabler.zip",
+		"version": "v1.0",
+		"author": "reprep",
+		"description": "Plugin for disabling watermark some games/apps apply to screenshots on Vita.",
+		"url": "https://wololo.net/talk/download/file.php?id=4265"
 	},
 	{
 		"name": "WDNF",
