@@ -5,10 +5,13 @@ public class VHBBAndroid {
     //region JSON
     public static final String JSON_NAME            = "name";
     public static final String JSON_FILENAME        = "filename";
+    public static final String JSON_DATA_FILENAME   = "data_filename";
     public static final String JSON_VERSION         = "version";
     public static final String JSON_AUTHOR          = "author";
     public static final String JSON_DESCRIPTION     = "description";
     public static final String JSON_URL             = "url";
+    public static final String JSON_DATA_URL        = "data_url";
+    public static final String JSON_DATE            = "date";
     //endregion
 
 

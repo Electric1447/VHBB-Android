@@ -15,6 +15,11 @@
             android:icon="@drawable/ic_menu_plugins_24dp"
             android:title="@string/menu_plugins" />
 
+        <item
+            android:id="@+id/nav_customrepo"
+            android:icon="@drawable/ic_menu_customrepo_24dp"
+            android:title="@string/menu_customrepo" />
+
     </group>
 
     <group android:id="@+id/menu_group_about">

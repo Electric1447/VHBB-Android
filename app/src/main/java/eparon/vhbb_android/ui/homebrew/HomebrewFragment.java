@@ -58,21 +58,21 @@ public class HomebrewFragment extends Fragment {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject item = response.getJSONObject(i);
 
-                            String name = item.getString(VitaDB.JSON_NAME);
-                            String iconUrl = item.getString(VitaDB.JSON_ICON);
-                            String version = item.getString(VitaDB.JSON_VERSION);
-                            String author = item.getString(VitaDB.JSON_AUTHOR);
-                            String description = item.getString(VitaDB.JSON_DESCRIPTION);
-                            String longDescription = item.getString(VitaDB.JSON_LONG_DESCRIPTION);
-                            String date = item.getString(VitaDB.JSON_DATE);
-                            String sourceUrl = item.getString(VitaDB.JSON_SOURCE);
-                            String releaseUrl = item.getString(VitaDB.JSON_RELEASE_PAGE);
-                            String url = item.getString(VitaDB.JSON_URL);
-                            String dataUrl = item.getString(VitaDB.JSON_DATA);
-                            int id = item.getInt(VitaDB.JSON_ID);
-                            int downloads = item.getInt(VitaDB.JSON_DOWNLOADS);
-                            long size = item.getLong(VitaDB.JSON_SIZE);
-                            long dataSize = item.getLong(VitaDB.JSON_DATA_SIZE);
+                            String name             = item.optString(VitaDB.JSON_NAME, "");
+                            String iconUrl          = item.optString(VitaDB.JSON_ICON, "");
+                            String version          = item.optString(VitaDB.JSON_VERSION, "");
+                            String author           = item.optString(VitaDB.JSON_AUTHOR, "");
+                            String description      = item.optString(VitaDB.JSON_DESCRIPTION, "");
+                            String longDescription  = item.optString(VitaDB.JSON_LONG_DESCRIPTION, "");
+                            String date             = item.optString(VitaDB.JSON_DATE, "");
+                            String sourceUrl        = item.optString(VitaDB.JSON_SOURCE, "");
+                            String releaseUrl       = item.optString(VitaDB.JSON_RELEASE_PAGE, "");
+                            String url              = item.optString(VitaDB.JSON_URL, "");
+                            String dataUrl          = item.optString(VitaDB.JSON_DATA, "");
+                            int id                  = item.optInt(VitaDB.JSON_ID, 0);
+                            int downloads           = item.optInt(VitaDB.JSON_DOWNLOADS, 0);
+                            long size               = item.optLong(VitaDB.JSON_SIZE, 0);
+                            long dataSize           = item.optLong(VitaDB.JSON_DATA_SIZE, 0);
 
                             mHomebrewList.add(new HomebrewItem(name, iconUrl, version, author, description, longDescription, date, sourceUrl, releaseUrl, url, dataUrl, id, downloads, size, dataSize));
                         }

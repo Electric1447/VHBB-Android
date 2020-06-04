@@ -37,7 +37,7 @@ public class PluginsFragment extends Fragment {
 
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_homebrew, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_plugins, container, false);
         setHasOptionsMenu(true);
 
         mRecyclerView = rootView.findViewById(R.id.recycler_view);
@@ -58,12 +58,12 @@ public class PluginsFragment extends Fragment {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject item = response.getJSONObject(i);
 
-                            String name = item.getString(VHBBAndroid.JSON_NAME);
-                            String filename = item.getString(VHBBAndroid.JSON_FILENAME);
-                            String version = item.getString(VHBBAndroid.JSON_VERSION);
-                            String author = item.getString(VHBBAndroid.JSON_AUTHOR);
-                            String description = item.getString(VHBBAndroid.JSON_DESCRIPTION);
-                            String url = item.getString(VHBBAndroid.JSON_URL);
+                            String name         = item.optString(VHBBAndroid.JSON_NAME, "");
+                            String filename     = item.optString(VHBBAndroid.JSON_FILENAME, "");
+                            String version      = item.optString(VHBBAndroid.JSON_VERSION, "");
+                            String author       = item.optString(VHBBAndroid.JSON_AUTHOR, "");
+                            String description  = item.optString(VHBBAndroid.JSON_DESCRIPTION, "");
+                            String url          = item.optString(VHBBAndroid.JSON_URL, "");
 
                             mPluginsList.add(new PluginsItem(name, filename, version, author, description, url));
                         }

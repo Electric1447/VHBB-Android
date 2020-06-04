@@ -1,4 +1,4 @@
-package eparon.vhbb_android.ui.homebrew;
+package eparon.vhbb_android.ui.customrepo;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,13 +7,11 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,54 +20,51 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
-import java.util.Locale;
 
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.NetworkUtils;
 import eparon.vhbb_android.Utils.PermissionUtils;
 
-public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHolder> {
+public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.ViewHolder> {
 
     private Activity mActivity;
-    private ArrayList<HomebrewItem> mHomebrewList;
-    private ArrayList<HomebrewItem> mHomebrewListFull;
+    private ArrayList<CustomRepoItem> mCustomRepoList;
+    private ArrayList<CustomRepoItem> mCustomRepoListFull;
 
-    public HomebrewAdapter (Activity activity, ArrayList<HomebrewItem> homebrewList) {
+    public CustomRepoAdapter (Activity activity, ArrayList<CustomRepoItem> customRepoList) {
         this.mActivity = activity;
-        this.mHomebrewList = homebrewList;
-        this.mHomebrewListFull = new ArrayList<>(mHomebrewList);
+        this.mCustomRepoList = customRepoList;
+        this.mCustomRepoListFull = new ArrayList<>(mCustomRepoList);
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder (@NonNull ViewGroup viewGroup, int viewType) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_homebrew, viewGroup, false);
-        return new ViewHolder(v);
+    public CustomRepoAdapter.ViewHolder onCreateViewHolder (@NonNull ViewGroup viewGroup, int viewType) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_customrepo, viewGroup, false);
+        return new CustomRepoAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder (@NonNull ViewHolder holder, int position) {
-        HomebrewItem currentItem = mHomebrewList.get(position);
+    public void onBindViewHolder (@NonNull CustomRepoAdapter.ViewHolder holder, int position) {
+        CustomRepoItem currentItem = mCustomRepoList.get(position);
 
         String nameID = currentItem.getName();
-        String iconID = currentItem.getIconUrl();
+        String filenameID = currentItem.getFilename();
+        String dataFilenameID = currentItem.getDataFilename();
         String versionID = currentItem.getVersion();
         String authorID = currentItem.getAuthor();
         String descriptionID = currentItem.getDescription();
-        String dateID = currentItem.getDateString();
-        int downloadsID = currentItem.getDownloads();
         String urlID = currentItem.getUrl();
         String dataUrlID = currentItem.getDataUrl();
+        String dateID = currentItem.getDate();
 
         holder.mTitle.setText(String.format("%s %s", nameID, versionID));
         holder.mAuthor.setText(authorID);
         holder.mDescription.setText(descriptionID);
+
         holder.mDate.setText(String.format("(%s)", dateID));
-        holder.mDownloads.setText(String.format(Locale.getDefault(), "%dDLs", downloadsID));
-        Picasso.get().load(iconID).fit().centerInside().into(holder.mIcon);
+        holder.mDate.setVisibility(!dateID.equals("") ? View.VISIBLE : View.GONE);
 
         holder.mDownload.setOnClickListener(v -> {
             if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
@@ -83,14 +78,12 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
             Uri uri = Uri.parse(urlID);
 
-            String filename = nameID + ".vpk";
-
             DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filename)
+                    .setTitle(filenameID)
                     .setDescription("Downloading...")
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                     .setVisibleInDownloadsUi(true)
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filenameID);
 
             assert downloadmanager != null;
             downloadmanager.enqueue(request);
@@ -116,14 +109,12 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
             Uri uri = Uri.parse(dataUrlID);
 
-            String filename = dataUrlID.substring(dataUrlID.lastIndexOf("/") + 1);
-
             DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filename)
+                    .setTitle(dataFilenameID)
                     .setDescription("Downloading...")
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                     .setVisibleInDownloadsUi(true)
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, dataFilenameID);
 
             assert downloadmanager != null;
             downloadmanager.enqueue(request);
@@ -132,13 +123,12 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
 
     @Override
     public int getItemCount () {
-        return mHomebrewList.size();
+        return mCustomRepoList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTitle, mAuthor, mDescription, mDate, mDownloads;
+        public TextView mTitle, mAuthor, mDescription, mDate;
         public ImageButton mDownload, mDownloadData;
-        public ImageView mIcon;
 
         public ViewHolder (View itemView) {
             super(itemView);
@@ -146,10 +136,8 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             mAuthor = itemView.findViewById(R.id.textview_author);
             mDescription = itemView.findViewById(R.id.textview_desc);
             mDate = itemView.findViewById(R.id.textview_date);
-            mDownloads = itemView.findViewById(R.id.textview_downloads);
             mDownload = itemView.findViewById(R.id.download);
             mDownloadData = itemView.findViewById(R.id.downloadData);
-            mIcon = itemView.findViewById(R.id.image);
         }
     }
 
@@ -162,13 +150,13 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
     private Filter mFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
-            ArrayList<HomebrewItem> filteredList = new ArrayList<>();
+            ArrayList<CustomRepoItem> filteredList = new ArrayList<>();
             if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(mHomebrewListFull);
+                filteredList.addAll(mCustomRepoListFull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (HomebrewItem item : mHomebrewListFull)
+                for (CustomRepoItem item : mCustomRepoListFull)
                     if (item.getName().toLowerCase().contains(filterPattern))
                         filteredList.add(item);
             }
@@ -181,9 +169,9 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
 
         @Override
         protected void publishResults (CharSequence constraint, FilterResults results) {
-            mHomebrewList.clear();
+            mCustomRepoList.clear();
             //noinspection unchecked
-            mHomebrewList.addAll((ArrayList<HomebrewItem>)results.values);
+            mCustomRepoList.addAll((ArrayList<CustomRepoItem>)results.values);
             notifyDataSetChanged();
         }
     };

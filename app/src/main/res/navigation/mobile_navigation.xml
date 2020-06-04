@@ -17,4 +17,10 @@
         android:label="@string/menu_plugins"
         tools:layout="@layout/fragment_plugins" />
 
+    <fragment
+        android:id="@+id/nav_customrepo"
+        android:name="eparon.vhbb_android.ui.customrepo.CustomRepoFragment"
+        android:label="@string/menu_customrepo"
+        tools:layout="@layout/fragment_customrepo" />
+
 </navigation>
