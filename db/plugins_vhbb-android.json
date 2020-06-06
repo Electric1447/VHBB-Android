@@ -536,6 +536,14 @@
 		"url": "https://bitbucket.org/SilicaAndPina/reskype/downloads/reSkype.suprx"
 	},
 	{
+		"name": "ScoreHax",
+		"filename": "ScoreHax.suprx",
+		"version": "v1.0",
+		"author": "SilicaAndPina",
+		"description": "Instant pro at any game!",
+		"url": "https://github.com/KuromeSan/ScoreHax/releases/download/v1.0/ScoreHax.suprx"
+	},
+	{
 		"name": "Sharpscale",
 		"filename": "sharpscale.zip",
 		"version": "v1.3.0",
@@ -606,6 +614,14 @@
 		"author": "SilicaAndPina",
 		"description": "Trophy unlocker",
 		"url": "https://bitbucket.org/SilicaAndPina/trophax/downloads/trophax2.0.suprx"
+	},
+	{
+		"name": "TrophyShot",
+		"filename": "TrophyShot.zip",
+		"version": "v1.0",
+		"author": "TEAM CBPS",
+		"description": "A PSVita plugin that takes a screenshot when you get a trophy",
+		"url": "https://github.com/FMudanyali/TrophyShot/releases/download/v1.0/TrophyShot.zip"
 	},
 	{
 		"name": "TurboPad",
