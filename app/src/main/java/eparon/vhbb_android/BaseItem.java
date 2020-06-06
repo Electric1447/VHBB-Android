@@ -1,13 +1,16 @@
 package eparon.vhbb_android;
 
+/**
+ * This class is the base for the different items in the app.
+ */
 public class BaseItem {
 
-    private String Name;
-    private String Filename;
-    private String Version;
-    private String Author;
-    private String Description;
-    private String Url;
+    private String Name;            // Item's name
+    private String Filename;        // Item's filename with extension
+    private String Version;         // Item's version string
+    private String Author;          // Item's author
+    private String Description;     // Short description about the item
+    private String Url;             // Item's file direct download link
 
     public BaseItem (String name, String filename, String version, String author, String desc, String url) {
         this.Name = name;

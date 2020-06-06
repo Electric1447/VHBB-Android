@@ -1,5 +1,8 @@
 package eparon.vhbb_android.Constants;
 
+/**
+ * Constants relating to VitaDB
+ */
 public class VitaDB {
 
     //region JSON

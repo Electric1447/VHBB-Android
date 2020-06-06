@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_plugins" />
 
     <fragment
+        android:id="@+id/nav_extras"
+        android:name="eparon.vhbb_android.ui.extras.ExtrasFragment"
+        android:label="@string/menu_extras"
+        tools:layout="@layout/fragment_extras" />
+
+    <fragment
         android:id="@+id/nav_customrepo"
         android:name="eparon.vhbb_android.ui.customrepo.CustomRepoFragment"
         android:label="@string/menu_customrepo"

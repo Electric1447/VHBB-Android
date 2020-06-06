@@ -7,6 +7,7 @@
 
     <string name="menu_homebrew">Homebrew</string>
     <string name="menu_plugins">Plugins</string>
+    <string name="menu_extras">Extras</string>
     <string name="menu_customrepo">Custom Repo</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_vitadb">VitaDB</string>

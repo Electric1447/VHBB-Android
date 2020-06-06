@@ -9,6 +9,9 @@ import java.util.Date;
 import eparon.vhbb_android.BaseItem;
 import eparon.vhbb_android.Constants.VitaDB;
 
+/**
+ * Homebrew item
+ */
 public class HomebrewItem extends BaseItem {
 
     private String IconUrl;

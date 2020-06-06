@@ -5,12 +5,17 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-
+/**
+ * Network Utilities
+ */
 public class NetworkUtils {
 
-    // Checking if network is available. (API 29 Compatible)
+    /**
+     * Check if network is available (API 29 Compatible)
+     *
+     * @param context app's context
+     * @return if network is available
+     */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isNetworkAvailable (Context context) {
         boolean result = false;

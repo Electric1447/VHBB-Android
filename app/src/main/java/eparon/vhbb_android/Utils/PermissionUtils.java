@@ -6,10 +6,18 @@ import android.app.Activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
+/**
+ * Permission Utilities
+ */
 public class PermissionUtils {
 
-    private static final int STORAGE_PERMISSION_CODE = 42069;
+    private static final int STORAGE_PERMISSION_CODE = 42069; // App's private request storage permission code.
 
+    /**
+     * Requests WRITE_EXTERNAL_STORAGE permission on runtime.
+     *
+     * @param activity the given activity
+     */
     public static void requestStoragePermission (Activity activity) {
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE))
             new AlertDialog.Builder(activity)
