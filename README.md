@@ -1,5 +1,5 @@
 # VHBB-Android
-VitaDB client for Android
+Vita Homebrew Browser client for Android
 
 ### Features:
 - See all homebrew from VitaDB.
