@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_homebrew"
         android:name="eparon.vhbb_android.ui.homebrew.HomebrewFragment"
-        android:label="@string/menu_homebrew"
+        android:label="@string/menu_homebrew_vitadb"
         tools:layout="@layout/fragment_homebrew" />
 
     <fragment
