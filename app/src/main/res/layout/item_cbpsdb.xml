@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/homebrew_padding_large"
+    android:layout_marginTop="@dimen/homebrew_padding_medium"
+    android:layout_marginRight="@dimen/homebrew_padding_large"
+    android:layout_marginBottom="@dimen/homebrew_padding_medium"
+    android:background="@color/colorPrimary"
+    app:cardCornerRadius="@dimen/homebrew_padding_medium"
+    tools:ignore="RtlHardcoded,RtlSymmetry,ContentDescription,HardcodedText">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:padding="@dimen/homebrew_item_inner_padding">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/homebrew_icon_size"
+            android:layout_height="@dimen/homebrew_icon_size"
+            android:layout_marginTop="@dimen/homebrew_padding_small"
+            android:layout_marginRight="@dimen/homebrew_item_inner_padding"
+            android:src="@mipmap/ic_launcher" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/textview_type"
+                android:maxLines="1"
+                android:text="@string/app_name"
+                android:textColor="@color/textColorTitle"
+                android:textSize="@dimen/text_title"
+                app:autoSizeMaxTextSize="@dimen/text_title"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
+
+            <TextView
+                android:id="@+id/textview_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:text="(Homebrew)"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_date" />
+
+            <TextView
+                android:id="@+id/textview_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_name"
+                android:layout_alignParentLeft="true"
+                android:maxLines="1"
+                android:text="Author: "
+                android:textSize="@dimen/text_author"
+                android:tint="@color/colorAccent"
+                app:autoSizeMaxTextSize="@dimen/text_author"
+                app:autoSizeMinTextSize="11sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
+
+            <TextView
+                android:id="@+id/textview_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_author"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="@dimen/homebrew_desc_margin_def"
+                android:maxLines="3"
+                android:paddingTop="@dimen/homebrew_padding_small"
+                android:text="Descriptions Currently Unsupported"
+                android:textSize="@dimen/text_description"
+                android:textStyle="italic"
+                android:tint="@color/textColorDescription" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:paddingRight="@dimen/homebrew_padding_medium"
+        android:paddingBottom="@dimen/homebrew_padding_medium">
+
+        <ImageButton
+            android:id="@+id/download"
+            android:layout_width="32.16dp"
+            android:layout_height="32.16dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:scaleX="1.34"
+            android:scaleY="1.34"
+            android:src="@drawable/ic_download_circle_24dp" />
+
+        <ImageButton
+            android:id="@+id/downloadData"
+            android:layout_width="32.16dp"
+            android:layout_height="32.16dp"
+            android:layout_marginRight="4dp"
+            android:layout_toLeftOf="@id/download"
+            android:background="@android:color/transparent"
+            android:scaleX="1.34"
+            android:scaleY="1.34"
+            android:src="@drawable/ic_download_data_circle_24dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

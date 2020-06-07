@@ -24,6 +24,7 @@ public class VHBBAndroid {
     public static final String BASE_URL_RAW         = "https://raw.githubusercontent.com/Electric1447/VHBB-Android/master/";
     public static final String PLUGIN_LIST_JSON_URL = BASE_URL_RAW + "db/plugins_vhbb-android.json";
     public static final String EXTRAS_LIST_JSON_URL = BASE_URL_RAW + "db/extras_vhbb-android.json";
+    public static final String DEFAULT_ICON_URL     = "https://i.imgur.com/0uoEviZ.png";
     //endregion
 
 }

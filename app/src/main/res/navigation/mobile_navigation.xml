@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_plugins" />
 
     <fragment
+        android:id="@+id/nav_cbpsdb"
+        android:name="eparon.vhbb_android.ui.cbpsdb.CBPSDBFragment"
+        android:label="@string/menu_cbpsdb"
+        tools:layout="@layout/fragment_cbpsdb" />
+
+    <fragment
         android:id="@+id/nav_extras"
         android:name="eparon.vhbb_android.ui.extras.ExtrasFragment"
         android:label="@string/menu_extras"

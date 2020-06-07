@@ -8,12 +8,20 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import eparon.vhbb_android.Constants.VitaDB;
+import eparon.vhbb_android.Utils.CacheUtils;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences (Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
+
+        Preference mCachePreference = getPreferenceManager().findPreference("clear_cache");
+        assert mCachePreference != null;
+        mCachePreference.setOnPreferenceClickListener(preference -> {
+            CacheUtils.deleteCache(requireContext());
+            return true;
+        });
 
         Preference mAboutPreference = getPreferenceManager().findPreference("about");
         assert mAboutPreference != null;

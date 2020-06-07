@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.NetworkUtils;

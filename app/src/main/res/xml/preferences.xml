@@ -7,9 +7,9 @@
         app:iconSpaceReserved="false">
 
         <Preference
-            android:key="placeholder"
-            android:summary="placeholder"
-            android:title="placeholder"
+            android:key="clear_cache"
+            android:summary="@string/prefs_cache_summery"
+            android:title="@string/prefs_cache_title"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>

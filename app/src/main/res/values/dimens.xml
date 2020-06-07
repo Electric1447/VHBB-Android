@@ -7,6 +7,8 @@
     <dimen name="nav_header_height">176dp</dimen>
 
     <!-- Custom -->
+    <dimen name="bottom_nav_height">56dp</dimen>
+
     <dimen name="homebrew_padding_large">16dp</dimen>
     <dimen name="homebrew_padding_medium">8dp</dimen>
     <dimen name="homebrew_item_inner_padding">16dp</dimen>

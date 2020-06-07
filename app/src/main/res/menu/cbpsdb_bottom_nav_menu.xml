@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bnav_all"
+        android:icon="@drawable/ic_menu_all_24dp"
+        android:title="@string/menu_all" />
+
+    <item
+        android:id="@+id/bnav_homebrew"
+        android:icon="@drawable/ic_menu_homebrew_24dp"
+        android:title="@string/menu_homebrew" />
+
+    <item
+        android:id="@+id/bnav_plugins"
+        android:icon="@drawable/ic_menu_plugins_24dp"
+        android:title="@string/menu_plugins" />
+
+</menu>

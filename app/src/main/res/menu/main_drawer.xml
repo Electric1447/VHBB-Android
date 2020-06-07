@@ -16,6 +16,11 @@
             android:title="@string/menu_plugins" />
 
         <item
+            android:id="@+id/nav_cbpsdb"
+            android:icon="@drawable/ic_menu_cbpsdb_24dp"
+            android:title="@string/menu_cbpsdb" />
+
+        <item
             android:id="@+id/nav_extras"
             android:icon="@drawable/ic_menu_extras_24dp"
             android:title="@string/menu_extras" />
