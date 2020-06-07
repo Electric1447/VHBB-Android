@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import eparon.vhbb_android.Constants.VHBBAndroid;
 import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.Utils.CacheUtils;
 
@@ -28,10 +29,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         mAboutPreference.setTitle(String.format("%s %s", getString(R.string.app_name), BuildConfig.VERSION_NAME));
         mAboutPreference.setSummary(R.string.nav_header_subtitle);
 
+        Preference mVitaDBPreference = getPreferenceManager().findPreference("vitadb");
+        assert mVitaDBPreference != null;
+        mVitaDBPreference.setOnPreferenceClickListener(preference -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(VitaDB.PARENT_URL)));
+            return true;
+        });
+
         Preference mGithubPreference = getPreferenceManager().findPreference("github");
         assert mGithubPreference != null;
         mGithubPreference.setOnPreferenceClickListener(preference -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(VitaDB.PARENT_URL)));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(VHBBAndroid.BASE_URL)));
             return true;
         });
     }
