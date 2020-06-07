@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.NetworkUtils;
 import eparon.vhbb_android.Utils.PermissionUtils;
@@ -89,6 +90,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
                     .setDescription("Downloading...")
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                     .setVisibleInDownloadsUi(true)
+                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
                     .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
 
             assert downloadmanager != null;
@@ -122,6 +124,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
                     .setDescription("Downloading...")
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                     .setVisibleInDownloadsUi(true)
+                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
                     .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
 
             assert downloadmanager != null;

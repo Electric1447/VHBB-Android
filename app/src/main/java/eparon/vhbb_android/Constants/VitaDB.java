@@ -26,11 +26,17 @@ public class VitaDB {
 
 
     //region URL
-    public static final String PARENT_URL = "https://rinnegatamante.it/vitadb";
-    public static final String HOMEBREW_LIST_JSON_URL = String.format("%s/list_hbs_json.php", PARENT_URL);
-    public static final String PLUGIN_LIST_JSON_URL = String.format("%s/list_plugins_json.php", PARENT_URL);
-    public static final String INFO_PARENT_URL = String.format("%s/#/info/", PARENT_URL);
-    public static final String ICONS_PARENT_URL = String.format("%s/icons/", PARENT_URL);
+    public static final String PARENT_URL               = "https://rinnegatamante.it/vitadb";
+    public static final String HOMEBREW_LIST_JSON_URL   = String.format("%s/list_hbs_json.php", PARENT_URL);
+    public static final String PLUGIN_LIST_JSON_URL     = String.format("%s/list_plugins_json.php", PARENT_URL);
+    public static final String INFO_PARENT_URL          = String.format("%s/#/info/", PARENT_URL);
+    public static final String ICONS_PARENT_URL         = String.format("%s/icons/", PARENT_URL);
+    //endregion
+
+
+    //region USER-AGENT
+    public static final String UA_REQUEST_HEADER        = "User-Agent";
+    public static final String UA_REQUEST_VALUE         = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36";
     //endregion
 
 }
