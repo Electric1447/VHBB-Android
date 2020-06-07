@@ -128,6 +128,14 @@
 		"url": "https://github.com/TheOfficialFloW/dejavu/releases/download/v0.1/dejavu.skprx"
 	},
 	{
+		"name": "DePlayEnabler",
+		"filename": "deplayenabler.zip",
+		"version": "v1.0",
+		"author": "alpakeno",
+		"description": "Enable video debug play mode with the ability to change sd0 and ux0 folder path from configuration file.",
+		"url": "https://github.com/alpakeno/DePlayEnabler/releases/download/1.0/deplayenabler.zip"
+	},
+	{
 		"name": "DerInClocKS",
 		"filename": "derinclocks.skprx",
 		"version": "v1.0",
@@ -182,6 +190,14 @@
 		"author": "cuevavirus",
 		"description": "PS Vita addcont ID dumper",
 		"url": "https://forum.devchroma.nl/index.php?PHPSESSID=ce39e24e2c88c0022da48dbd3dfe52b5&action=dlattach;topic=93.0;attach=11"
+	},
+	{
+		"name": "EmergencyMount",
+		"filename": "EmergencyMount.skprx",
+		"version": "v1.0",
+		"author": "teakhanirons",
+		"description": "This plugin provides a brick protection for Vita.",
+		"url": "https://github.com/teakhanirons/EmergencyMount/releases/download/1.0/EmergencyMount.skprx"
 	},
 	{
 		"name": "forcelang",
@@ -278,6 +294,22 @@
 		"author": "GrapheneCt",
 		"description": "Plugin for PS Vita that disables memory budget check during app launch in SceShell.",
 		"url": "https://github.com/GrapheneCt/LowMemMode/releases/download/v1.2/LowMemMode.suprx"
+	},
+	{
+		"name": "MAFU-I",
+		"filename": "MAFUinput.skprx",
+		"version": "v1.0",
+		"author": "Rufis01",
+		"description": "Lets you record the input you provide to your PSVita and play it back whenever you need to.",
+		"url": "https://github.com/Rufis01/MAFU-I/releases/download/1.0/MAFUinput.skprx"
+	},
+	{
+		"name": "MAFU-I Non-stop Edition",
+		"filename": "MAFUinput-nonstop.skprx",
+		"version": "v1.0",
+		"author": "Rufis01",
+		"description": "Lets you record the input you provide to your PSVita and play it back whenever you need to.",
+		"url": "https://github.com/Rufis01/MAFU-I/releases/download/1.0-nonstop/MAFUinput-nonstop.skprx"
 	},
 	{
 		"name": "MakePsmGreatAgain",
@@ -702,6 +734,14 @@
 		"author": "joel16",
 		"description": "A simple plugin that displays the current battery percentage on your PS VITA",
 		"url": "https://github.com/joel16/VITABattery/releases/download/1.4/batteryPercent.suprx"
+	},
+	{
+		"name": "Vita-BootSound",
+		"filename": "bootsound.suprx",
+		"version": "v1.0",
+		"author": "teakhanirons",
+		"description": "Play a WAV file as a custom boot jingle on PS Vita / PS TV at boot.",
+		"url": "https://github.com/teakhanirons/Vita-BootSound/releases/download/1.0/bootsound.suprx"
 	},
 	{
 		"name": "Vitabright",
