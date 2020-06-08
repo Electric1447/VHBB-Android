@@ -8,8 +8,8 @@ android {
         applicationId "eparon.vhbb_android"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 8
-        versionName "beta-6"
+        versionCode 9
+        versionName "beta-7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resConfigs "en"

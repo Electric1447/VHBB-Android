@@ -61,6 +61,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         String urlID = currentItem.getUrl();
         String optionsID = currentItem.getOptions();
         String typeID = currentItem.getType();
+        String dataUrlID = currentItem.getDataUrl();
 
         holder.mTitle.setText(nameID);
         holder.mAuthor.setText(authorID);
@@ -122,6 +123,35 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
             assert downloadmanager != null;
             downloadmanager.enqueue(request);
         });
+
+        holder.mDownloadData.setVisibility(!dataUrlID.equals("None") ? View.VISIBLE : View.GONE);
+
+        if (!dataUrlID.equals("None")) holder.mDownloadData.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                PermissionUtils.requestStoragePermission(mActivity);
+
+            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
+                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+            Uri uri = Uri.parse(dataUrlID);
+
+            String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
+            filename = filename.substring(0, filename.lastIndexOf(".")) + "-data.zip";
+
+            DownloadManager.Request request = new DownloadManager.Request(uri)
+                    .setTitle(filename)
+                    .setDescription("Downloading...")
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    .setVisibleInDownloadsUi(true)
+                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+
+            assert downloadmanager != null;
+            downloadmanager.enqueue(request);
+        });
     }
 
     @Override
@@ -131,7 +161,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTitle, mAuthor, mType;
-        public ImageButton mDownload;
+        public ImageButton mDownload, mDownloadData;
         public ImageView mIcon;
 
         public ViewHolder (View itemView) {
@@ -140,6 +170,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
             mAuthor = itemView.findViewById(R.id.textview_author);
             mType = itemView.findViewById(R.id.textview_type);
             mDownload = itemView.findViewById(R.id.download);
+            mDownloadData = itemView.findViewById(R.id.downloadData);
             mIcon = itemView.findViewById(R.id.image);
         }
     }

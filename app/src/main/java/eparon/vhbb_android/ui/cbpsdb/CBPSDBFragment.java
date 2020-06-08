@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
@@ -34,6 +33,7 @@ import eparon.vhbb_android.R;
 
 public class CBPSDBFragment extends Fragment {
 
+    private static final String TAG = "VHBB-Android";
     private RecyclerView mRecyclerView;
     private CBPSDBAdapter mCBPSDBAdapter;
     private ArrayList<CBPSDBItem> mCBPSDBList;
@@ -117,14 +117,25 @@ public class CBPSDBFragment extends Fragment {
     }
 
     private void initializeAdapter (List<String[]> result) {
+        List<String[]> dataList = new ArrayList<>();
+
         for (int i = 1; i < result.size(); i++) {
             String[] item = result.get(i);
 
-            boolean isVisible = item[CBPSDB.CVS_VISIBLE].equalsIgnoreCase("true");
+            boolean isVisible = item[CBPSDB.CVS_VISIBLE].equals("True");
 
-            if (isVisible)
+            if (isVisible) {
                 mCBPSDBList.add(new CBPSDBItem(item[CBPSDB.CVS_ID], item[CBPSDB.CVS_TITLE], item[CBPSDB.CVS_CREDITS], item[CBPSDB.CVS_ICON0], item[CBPSDB.CVS_URL], item[CBPSDB.CVS_OPTIONS], item[CBPSDB.CVS_TYPE]));
+            } else {
+                dataList.add(new String[] {item[CBPSDB.CVS_TITLE].substring(0, item[CBPSDB.CVS_TITLE].length() - 11), item[CBPSDB.CVS_URL]});
+            }
         }
+
+        if (dataList.size() > 0)
+            for (int i = 0; i < dataList.size(); i++)
+                for (int j = 0; j < mCBPSDBList.size(); j++)
+                    if (dataList.get(i)[0].equals(mCBPSDBList.get(j).getName()))
+                        mCBPSDBList.get(j).setDataUrl(dataList.get(i)[1]);
 
         mCBPSDBAdapter = new CBPSDBAdapter(requireActivity(), mCBPSDBList);
         mRecyclerView.setAdapter(mCBPSDBAdapter);

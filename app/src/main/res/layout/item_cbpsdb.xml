@@ -70,20 +70,6 @@
                 app:autoSizeStepGranularity="1sp"
                 app:autoSizeTextType="uniform" />
 
-            <TextView
-                android:id="@+id/textview_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textview_author"
-                android:layout_alignParentLeft="true"
-                android:layout_marginRight="@dimen/homebrew_desc_margin_def"
-                android:maxLines="3"
-                android:paddingTop="@dimen/homebrew_padding_small"
-                android:text="Descriptions Currently Unsupported"
-                android:textSize="@dimen/text_description"
-                android:textStyle="italic"
-                android:tint="@color/textColorDescription" />
-
         </RelativeLayout>
 
     </LinearLayout>

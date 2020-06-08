@@ -11,6 +11,7 @@ public class CBPSDBItem {
     private String Url;
     private String Options;
     private String Type;
+    private String DataUrl = "None";
 
     public CBPSDBItem (String id, String name, String author, String icon0, String url, String options, String type) {
         this.ID = id;
@@ -71,6 +72,14 @@ public class CBPSDBItem {
             default:
                 return "Unknown";
         }
+    }
+
+    public String getDataUrl () {
+        return DataUrl;
+    }
+
+    public void setDataUrl (String dataUrl) {
+        DataUrl = dataUrl;
     }
 
 }
