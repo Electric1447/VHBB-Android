@@ -118,5 +118,17 @@
 		"data_url": "",
 		"date": "14/05/2019",
 		"icon": "https://i.imgur.com/xY5xbTT.png"
+	},
+	{
+		"name": "vitaQuake",
+		"filename": "vitaQuake.vpk",
+		"data_filename": "vitaQuake.zip",
+		"version": "v4.11-MOD",
+		"author": "Rinnegatamante & cuevavirus",
+		"description": "vitaQuake fork with 1920x1080 rendering for PSTV",
+		"url": "https://drive.google.com/uc?export=download&id=1mvUXNq_mgS7IzRKlwi7m51Xr2uQR_CI4",
+		"data_url": "https://drive.google.com/uc?export=download&id=1DKZ0LnzZz4v1sTY45pgste5y5POR0jxv",
+		"date": "12/05/2020",
+		"icon": "https://rinnegatamante.it/vitadb/icons/9d7c2ecf8d9fffaf98f4e6b191878c3a2eee39dc2d556838053bd006f61b3c66.png"
 	}
 ]
