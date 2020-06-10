@@ -816,6 +816,14 @@
 		"url": "https://github.com/xerpi/vitastick/files/2227073/vitastick.alpha.0.4.1.zip"
 	},
 	{
+		"name": "Virtual mass storage",
+		"filename": "vmass.skprx",
+		"version": "v1.00",
+		"author": "Princess of Sleeping",
+		"description": "A plugin to create a ram disk to mount at uma0.",
+		"url": "https://github.com/Princess-of-Sleeping/vmass/releases/download/v1.00/vmass.skprx"
+	},
+	{
 		"name": "volume_profile",
 		"filename": "jav.suprx",
 		"version": "v2.1.0",
