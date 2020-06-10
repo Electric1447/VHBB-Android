@@ -96,6 +96,18 @@
 		"icon": "https://i.imgur.com/a4lvml4.png"
 	},
 	{
+		"name": "PSP Emulators Installer",
+		"filename": "PSP.Emulators.Installer.vpk",
+		"data_filename": "",
+		"version": "v1.11",
+		"author": "theheroGAC",
+		"description": "OneMenu is a simple to use UI which separates the installed games and apps into categories.",
+		"url": "https://github.com/theheroGAC/PSP-EMULATORS-INSTALLER/releases/download/1.11/PSP.Emulators.Installer.vpk",
+		"data_url": "",
+		"date": "30/12/2019",
+		"icon": "https://raw.githubusercontent.com/theheroGAC/PSP-EMULATORS-INSTALLER/master/sce_sys/icon0.png"
+	},
+	{
 		"name": "RegistryEditor MOD",
 		"filename": "RegistryEditor.vpk",
 		"data_filename": "",
