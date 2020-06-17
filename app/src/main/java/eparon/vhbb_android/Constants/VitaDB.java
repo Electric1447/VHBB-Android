@@ -25,6 +25,15 @@ public class VitaDB {
     //endregion
 
 
+    //region TYPE
+    public static final int TYPE_ALL                = 0;
+    public static final int TYPE_ORIGINAL_GAMES     = 1;
+    public static final int TYPE_GAME_PORTS         = 2;
+    public static final int TYPE_UTILISES           = 4;
+    public static final int TYPE_EMULATORS          = 5;
+    //endregion
+
+
     //region URL
     public static final String PARENT_URL               = "https://rinnegatamante.it/vitadb";
     public static final String HOMEBREW_LIST_JSON_URL   = String.format("%s/list_hbs_json.php", PARENT_URL);

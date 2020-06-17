@@ -16,6 +16,10 @@
     <string name="menu_source_code">Source Code</string>
     <string name="menu_search">Search</string>
     <string name="menu_all">All</string>
+    <string name="menu_original_games">Original Games</string>
+    <string name="menu_game_ports">Game Ports</string>
+    <string name="menu_utilities">Utilities</string>
+    <string name="menu_emulators">Emulators</string>
 
     <string name="customrepo_refresh_title">Please enter a valid repo url.</string>
     <string name="customrepo_refresh">Refresh</string>

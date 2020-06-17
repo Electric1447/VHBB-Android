@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +35,7 @@ public class HomebrewFragment extends Fragment {
     private HomebrewAdapter mHomebrewAdapter;
     private ArrayList<HomebrewItem> mHomebrewList;
     private RequestQueue mQueue;
+    private BottomNavigationView mBottomNav;
 
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +49,28 @@ public class HomebrewFragment extends Fragment {
         mHomebrewList = new ArrayList<>();
         mQueue = Volley.newRequestQueue(requireContext());
         jsonParse();
+
+        mBottomNav = rootView.findViewById(R.id.bottom_nav);
+        mBottomNav.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.bnav_all:
+                    mHomebrewAdapter.getTypeFilter().filter(String.valueOf(VitaDB.TYPE_ALL));
+                    return true;
+                case R.id.bnav_original_games:
+                    mHomebrewAdapter.getTypeFilter().filter(String.valueOf(VitaDB.TYPE_ORIGINAL_GAMES));
+                    return true;
+                case R.id.bnav_game_ports:
+                    mHomebrewAdapter.getTypeFilter().filter(String.valueOf(VitaDB.TYPE_GAME_PORTS));
+                    return true;
+                case R.id.bnav_utilities:
+                    mHomebrewAdapter.getTypeFilter().filter(String.valueOf(VitaDB.TYPE_UTILISES));
+                    return true;
+                case R.id.bnav_emulators:
+                    mHomebrewAdapter.getTypeFilter().filter(String.valueOf(VitaDB.TYPE_EMULATORS));
+                    return true;
+            }
+            return false;
+        });
 
         return rootView;
     }
@@ -69,12 +93,13 @@ public class HomebrewFragment extends Fragment {
                             String releaseUrl       = item.optString(VitaDB.JSON_RELEASE_PAGE, "");
                             String url              = item.optString(VitaDB.JSON_URL, "");
                             String dataUrl          = item.optString(VitaDB.JSON_DATA, "");
+                            int type                = item.optInt(VitaDB.JSON_TYPE, 4);
                             int id                  = item.optInt(VitaDB.JSON_ID, 0);
                             int downloads           = item.optInt(VitaDB.JSON_DOWNLOADS, 0);
                             long size               = item.optLong(VitaDB.JSON_SIZE, 0);
                             long dataSize           = item.optLong(VitaDB.JSON_DATA_SIZE, 0);
 
-                            mHomebrewList.add(new HomebrewItem(name, iconUrl, version, author, description, longDescription, date, sourceUrl, releaseUrl, url, dataUrl, id, downloads, size, dataSize));
+                            mHomebrewList.add(new HomebrewItem(name, iconUrl, version, author, description, longDescription, date, sourceUrl, releaseUrl, url, dataUrl, type, id, downloads, size, dataSize));
                         }
 
                         mHomebrewAdapter = new HomebrewAdapter(requireActivity(), mHomebrewList);
@@ -101,7 +126,8 @@ public class HomebrewFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange (String newText) {
-                mHomebrewAdapter.getFilter().filter(newText);
+                mHomebrewAdapter.getSearchFilter().filter(newText);
+                mBottomNav.setSelectedItemId(R.id.bnav_all);
                 return false;
             }
         });

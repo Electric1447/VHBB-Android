@@ -33,7 +33,6 @@ import eparon.vhbb_android.R;
 
 public class CBPSDBFragment extends Fragment {
 
-    private static final String TAG = "VHBB-Android";
     private RecyclerView mRecyclerView;
     private CBPSDBAdapter mCBPSDBAdapter;
     private ArrayList<CBPSDBItem> mCBPSDBList;

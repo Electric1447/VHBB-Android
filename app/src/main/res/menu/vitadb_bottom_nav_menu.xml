@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bnav_all"
+        android:icon="@drawable/ic_menu_all_24dp"
+        android:title="@string/menu_all" />
+
+    <item
+        android:id="@+id/bnav_original_games"
+        android:icon="@drawable/ic_menu_cbpsdb_24dp"
+        android:title="@string/menu_original_games" />
+
+    <item
+        android:id="@+id/bnav_game_ports"
+        android:icon="@drawable/ic_menu_homebrew_24dp"
+        android:title="@string/menu_game_ports" />
+
+    <item
+        android:id="@+id/bnav_utilities"
+        android:icon="@drawable/ic_menu_plugins_24dp"
+        android:title="@string/menu_utilities" />
+
+    <item
+        android:id="@+id/bnav_emulators"
+        android:icon="@drawable/ic_menu_extras_24dp"
+        android:title="@string/menu_emulators" />
+
+</menu>

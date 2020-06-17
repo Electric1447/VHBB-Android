@@ -18,18 +18,20 @@ public class HomebrewItem extends BaseItem {
     private String LongDescription;
     private String SourceUrl, ReleaseUrl;
     private String DataUrl;
+    private int Type;
     private int ID;
     private int Downloads;
     private long Size, DataSize;
     private Date Date;
 
-    public HomebrewItem (String name, String iconUrl, String version, String author, String desc, String longDesc, String date, String srcUrl, String relUrl, String url, String dataUrl, int id, int downloads, long size, long dataSize) {
+    public HomebrewItem (String name, String iconUrl, String version, String author, String desc, String longDesc, String date, String srcUrl, String relUrl, String url, String dataUrl, int type, int id, int downloads, long size, long dataSize) {
         super(name, "", version, author, desc, url);
         this.IconUrl = String.format("%s%s", VitaDB.ICONS_PARENT_URL, iconUrl);
         this.LongDescription = longDesc;
         this.SourceUrl = srcUrl;
         this.ReleaseUrl = relUrl;
         this.DataUrl = dataUrl;
+        this.Type = type;
         this.ID = id;
         this.Downloads = downloads;
         this.Size = size;
@@ -55,6 +57,10 @@ public class HomebrewItem extends BaseItem {
 
     public String getDataUrl () {
         return DataUrl;
+    }
+
+    public int getType () {
+        return Type;
     }
 
     public int getID () {

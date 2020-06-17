@@ -157,11 +157,11 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
 
     //region Filter
 
-    public Filter getFilter () {
-        return mFilter;
+    public Filter getSearchFilter () {
+        return mSearchFilter;
     }
 
-    private Filter mFilter = new Filter() {
+    private Filter mSearchFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<HomebrewItem> filteredList = new ArrayList<>();
@@ -172,6 +172,37 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
 
                 for (HomebrewItem item : mHomebrewListFull)
                     if (item.getName().toLowerCase().contains(filterPattern))
+                        filteredList.add(item);
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults (CharSequence constraint, FilterResults results) {
+            mHomebrewList.clear();
+            //noinspection unchecked
+            mHomebrewList.addAll((ArrayList<HomebrewItem>)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    public Filter getTypeFilter () {
+        return mTypeFilter;
+    }
+
+    private Filter mTypeFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering (CharSequence constraint) {
+            ArrayList<HomebrewItem> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0 || constraint.equals(String.valueOf(VitaDB.TYPE_ALL))) {
+                filteredList.addAll(mHomebrewListFull);
+            } else {
+                for (HomebrewItem item : mHomebrewListFull)
+                    if (String.valueOf(item.getType()).contentEquals(constraint))
                         filteredList.add(item);
             }
 
