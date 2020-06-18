@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="@dimen/homebrew_padding_medium"
+        android:paddingBottom="@dimen/homebrew_padding_medium"
         android:scrollbars="vertical" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

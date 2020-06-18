@@ -8,22 +8,22 @@
 
     <item
         android:id="@+id/bnav_original_games"
-        android:icon="@drawable/ic_menu_cbpsdb_24dp"
+        android:icon="@drawable/ic_menu_playstation_24dp"
         android:title="@string/menu_original_games" />
 
     <item
         android:id="@+id/bnav_game_ports"
-        android:icon="@drawable/ic_menu_homebrew_24dp"
+        android:icon="@drawable/ic_menu_doom_24dp"
         android:title="@string/menu_game_ports" />
 
     <item
         android:id="@+id/bnav_utilities"
-        android:icon="@drawable/ic_menu_plugins_24dp"
+        android:icon="@drawable/ic_menu_utilities_24dp"
         android:title="@string/menu_utilities" />
 
     <item
         android:id="@+id/bnav_emulators"
-        android:icon="@drawable/ic_menu_extras_24dp"
+        android:icon="@drawable/ic_menu_emulators_24dp"
         android:title="@string/menu_emulators" />
 
 </menu>

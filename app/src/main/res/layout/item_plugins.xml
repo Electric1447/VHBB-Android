@@ -21,9 +21,10 @@
         <TextView
             android:id="@+id/textview_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/text_title_height"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
             android:maxLines="1"
             android:text="@string/app_name"
             android:textColor="@color/textColorTitle"
@@ -42,11 +43,7 @@
             android:maxLines="1"
             android:text="Author: "
             android:textSize="@dimen/text_author"
-            android:tint="@color/colorAccent"
-            app:autoSizeMaxTextSize="@dimen/text_author"
-            app:autoSizeMinTextSize="11sp"
-            app:autoSizeStepGranularity="1sp"
-            app:autoSizeTextType="uniform" />
+            android:tint="@color/colorAccent" />
 
         <TextView
             android:id="@+id/textview_desc"

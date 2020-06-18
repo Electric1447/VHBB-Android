@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_nav_height"
         android:background="@color/colorPrimaryDark"
+        android:paddingBottom="@dimen/bottom_nav_bottom_offcenter"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"

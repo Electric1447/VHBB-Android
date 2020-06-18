@@ -7,7 +7,8 @@
     <dimen name="nav_header_height">176dp</dimen>
 
     <!-- Custom -->
-    <dimen name="bottom_nav_height">56dp</dimen>
+    <dimen name="bottom_nav_height">58dp</dimen>
+    <dimen name="bottom_nav_bottom_offcenter">4dp</dimen>
 
     <dimen name="homebrew_padding_large">16dp</dimen>
     <dimen name="homebrew_padding_medium">8dp</dimen>
@@ -17,7 +18,9 @@
     <dimen name="homebrew_desc_margin_def">30sp</dimen>
     <dimen name="homebrew_desc_margin_sec">64sp</dimen>
 
-    <dimen name="text_title">20sp</dimen>
+    <dimen name="text_title_height">28dp</dimen>
+
+    <dimen name="text_title">19sp</dimen>
     <dimen name="text_author">13sp</dimen>
     <dimen name="text_description">14sp</dimen>
     <dimen name="text_date">12sp</dimen>
