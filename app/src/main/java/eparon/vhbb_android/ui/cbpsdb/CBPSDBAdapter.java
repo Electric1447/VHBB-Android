@@ -73,7 +73,6 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         holder.mDownload.setOnClickListener(v -> {
             String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
             String filenameExtension = filename.substring(filename.lastIndexOf(".")).toLowerCase();
-
             // If URL does not contain the filename
             if (!(filenameExtension.equals(".vpk") || filenameExtension.equals(".zip") || filenameExtension.equals(".suprx") || filenameExtension.equals(".skprx"))) {
                 if (typeID.equals(CBPSDB.TYPE_PLUGIN)) {
@@ -81,6 +80,8 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
                         filename = idID + ".skprx"; // Kernel plugin
                     else
                         filename = idID + ".suprx"; // User plugin
+                } else if (typeID.equals(CBPSDB.TYPE_VPK)) {
+                    filename = idID + ".vpk";
                 } else {
                     filename = idID;
                     Toast.makeText(v.getContext(), "Error while parsing file extension", Toast.LENGTH_SHORT).show();
