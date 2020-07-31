@@ -1,8 +1,6 @@
 package eparon.vhbb_android;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,7 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,7 +19,6 @@ import com.google.android.material.navigation.NavigationView;
 import eparon.vhbb_android.Constants.VHBBAndroid;
 import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.Utils.NetworkUtils;
-import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_homebrew, R.id.nav_plugins, R.id.nav_cbpsdb, R.id.nav_extras, R.id.nav_customrepo)
-                .setDrawerLayout(drawer).build();
+                .setOpenableLayout(drawer).build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -65,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (!NetworkUtils.isNetworkAvailable(getApplicationContext()))
             Toast.makeText(this, "Network not available", Toast.LENGTH_SHORT).show();
-
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-            PermissionUtils.requestStoragePermission(this);
     }
 
     @Override

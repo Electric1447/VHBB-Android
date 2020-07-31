@@ -1,8 +1,6 @@
 package eparon.vhbb_android.ui.customrepo;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +9,14 @@ import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.DownloadUtils;
-import eparon.vhbb_android.Utils.NetworkUtils;
-import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.ViewHolder> {
 
@@ -64,17 +58,7 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
         holder.mDate.setText(String.format("(%s)", dateID));
         holder.mDate.setVisibility(!dateID.equals("") ? View.VISIBLE : View.GONE);
 
-        holder.mDownload.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID);
-        });
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID));
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)holder.mDescription.getLayoutParams();
@@ -84,17 +68,7 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
                 0);
         holder.mDescription.setLayoutParams(lp);
 
-        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), dataFilenameID);
-        });
+        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), dataFilenameID));
     }
 
     @Override

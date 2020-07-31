@@ -4,12 +4,18 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
+import android.widget.Toast;
 
 import eparon.vhbb_android.Constants.VitaDB;
 
 public class DownloadUtils {
 
     public static void VHBBDownloadManager (Context context, Uri uri, String filename) {
+        if (!NetworkUtils.isNetworkAvailable(context)) {
+            Toast.makeText(context, "Network not available", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         DownloadManager downloadmanager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
 
         DownloadManager.Request request = new DownloadManager.Request(uri)

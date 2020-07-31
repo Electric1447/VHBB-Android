@@ -1,8 +1,5 @@
 package eparon.vhbb_android.ui.cbpsdb;
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -25,17 +21,13 @@ import eparon.vhbb_android.Constants.CBPSDB;
 import eparon.vhbb_android.Constants.VHBBAndroid;
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.DownloadUtils;
-import eparon.vhbb_android.Utils.NetworkUtils;
-import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder> {
 
-    private Activity mActivity;
     private ArrayList<CBPSDBItem> mCBPSDBList;
     private ArrayList<CBPSDBItem> mCBPSDBListFull;
 
-    public CBPSDBAdapter (Activity activity, ArrayList<CBPSDBItem> cbpsdbList) {
-        this.mActivity = activity;
+    public CBPSDBAdapter (ArrayList<CBPSDBItem> cbpsdbList) {
         this.mCBPSDBList = cbpsdbList;
         this.mCBPSDBListFull = new ArrayList<>(mCBPSDBList);
     }
@@ -82,14 +74,6 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         Picasso.get().load(iconID).fit().centerInside().into(holder.mIcon);
 
         holder.mDownload.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
             String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
             String filenameExtension = filename.substring(filename.lastIndexOf(".")).toLowerCase();
 
@@ -112,14 +96,6 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         holder.mDownloadData.setVisibility(!dataUrlID.equals("None") ? View.VISIBLE : View.GONE);
 
         if (!dataUrlID.equals("None")) holder.mDownloadData.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
             String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
             filename = filename.substring(0, filename.lastIndexOf(".")) + "-data.zip";
 

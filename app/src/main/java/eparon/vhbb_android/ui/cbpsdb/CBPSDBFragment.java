@@ -136,7 +136,7 @@ public class CBPSDBFragment extends Fragment {
                     if (dataList.get(i)[0].equals(mCBPSDBList.get(j).getName()))
                         mCBPSDBList.get(j).setDataUrl(dataList.get(i)[1]);
 
-        mCBPSDBAdapter = new CBPSDBAdapter(requireActivity(), mCBPSDBList);
+        mCBPSDBAdapter = new CBPSDBAdapter(mCBPSDBList);
         mRecyclerView.setAdapter(mCBPSDBAdapter);
     }
 

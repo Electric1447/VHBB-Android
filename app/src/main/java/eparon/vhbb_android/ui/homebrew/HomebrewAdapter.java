@@ -1,9 +1,7 @@
 package eparon.vhbb_android.ui.homebrew;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -28,8 +24,6 @@ import java.util.Locale;
 import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.DownloadUtils;
-import eparon.vhbb_android.Utils.NetworkUtils;
-import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHolder> {
 
@@ -72,16 +66,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         Picasso.get().load(iconID).fit().centerInside().into(holder.mIcon);
 
         holder.mDownload.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
             String filename = nameID + ".vpk";
-
             DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filename);
         });
 
@@ -94,16 +79,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         holder.mDescription.setLayoutParams(lp);
 
         if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
             String filename = dataUrlID.substring(dataUrlID.lastIndexOf("/") + 1);
-
             DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), filename);
         });
 

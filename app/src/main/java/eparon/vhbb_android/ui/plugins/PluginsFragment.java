@@ -68,7 +68,7 @@ public class PluginsFragment extends Fragment {
                             mPluginsList.add(new PluginsItem(name, filename, version, author, description, url));
                         }
 
-                        mPluginsAdapter = new PluginsAdapter(requireActivity(), mPluginsList);
+                        mPluginsAdapter = new PluginsAdapter(mPluginsList);
                         mRecyclerView.setAdapter(mPluginsAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();

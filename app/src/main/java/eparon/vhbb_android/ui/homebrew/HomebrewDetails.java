@@ -1,8 +1,6 @@
 package eparon.vhbb_android.ui.homebrew;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,18 +9,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.DownloadUtils;
-import eparon.vhbb_android.Utils.NetworkUtils;
-import eparon.vhbb_android.Utils.PermissionUtils;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class HomebrewDetails extends AppCompatActivity {
@@ -93,32 +87,14 @@ public class HomebrewDetails extends AppCompatActivity {
         mReleaseBtn.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ReleaseUrl))));
 
         mDownload.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(this);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(this, "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
             String filename = Name + ".vpk";
-
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(Url), filename);
+            DownloadUtils.VHBBDownloadManager(this, Uri.parse(Url), filename);
         });
 
         mDownloadData.setVisibility(!DataUrl.equals("") ? View.VISIBLE : View.GONE);
         if (!DataUrl.equals("")) mDownloadData.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(this);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
             String filename = DataUrl.substring(DataUrl.lastIndexOf("/") + 1);
-
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(DataUrl), filename);
+            DownloadUtils.VHBBDownloadManager(this, Uri.parse(Url), filename);
         });
 
         if (ScreenshotsUrl != null)

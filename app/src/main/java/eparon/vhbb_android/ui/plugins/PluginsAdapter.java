@@ -1,8 +1,5 @@
 package eparon.vhbb_android.ui.plugins;
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,27 +7,21 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import eparon.vhbb_android.R;
 import eparon.vhbb_android.Utils.DownloadUtils;
-import eparon.vhbb_android.Utils.NetworkUtils;
-import eparon.vhbb_android.Utils.PermissionUtils;
 
 public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHolder> {
 
-    private Activity mActivity;
     private ArrayList<PluginsItem> mPluginsList;
     private ArrayList<PluginsItem> mPluginsListFull;
 
-    public PluginsAdapter (Activity activity, ArrayList<PluginsItem> pluginsList) {
-        this.mActivity = activity;
+    public PluginsAdapter (ArrayList<PluginsItem> pluginsList) {
         this.mPluginsList = pluginsList;
         this.mPluginsListFull = new ArrayList<>(mPluginsList);
     }
@@ -57,17 +48,7 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
         holder.mAuthor.setText(authorID);
         holder.mDescription.setText(descriptionID);
 
-        holder.mDownload.setOnClickListener(v -> {
-            if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                PermissionUtils.requestStoragePermission(mActivity);
-
-            if (!NetworkUtils.isNetworkAvailable(v.getContext())) {
-                Toast.makeText(v.getContext(), "Network not available", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID);
-        });
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID));
     }
 
     @Override
