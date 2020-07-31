@@ -44,16 +44,13 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         CBPSDBItem currentItem = mCBPSDBList.get(position);
 
         String idID = currentItem.getID();
-        String nameID = currentItem.getName();
-        String authorID = currentItem.getAuthor();
         String iconID = currentItem.getIcon0();
         String urlID = currentItem.getUrl();
-        String optionsID = currentItem.getOptions();
         String typeID = currentItem.getType();
         String dataUrlID = currentItem.getDataUrl();
 
-        holder.mTitle.setText(nameID);
-        holder.mAuthor.setText(authorID);
+        holder.mTitle.setText(currentItem.getName());
+        holder.mAuthor.setText(currentItem.getAuthor());
         holder.mType.setText(String.format("(%s)", currentItem.getTypeString()));
 
         if (iconID.equals("None")) {
@@ -80,7 +77,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
             // If URL does not contain the filename
             if (!(filenameExtension.equals(".vpk") || filenameExtension.equals(".zip") || filenameExtension.equals(".suprx") || filenameExtension.equals(".skprx"))) {
                 if (typeID.equals(CBPSDB.TYPE_PLUGIN)) {
-                    if (optionsID.equals(CBPSDB.OPTIONS_KERNEL))
+                    if (currentItem.getOptions().equals(CBPSDB.OPTIONS_KERNEL))
                         filename = idID + ".skprx"; // Kernel plugin
                     else
                         filename = idID + ".suprx"; // User plugin

@@ -23,13 +23,8 @@ public class HomebrewDetails extends AppCompatActivity {
 
     HomebrewItem cItem;
 
-    String Name, IconUrl, Version, Author, LongDescription, SourceUrl, ReleaseUrl, Date, Url, DataUrl;
     String[] ScreenshotsUrl;
-
-    TextView mTitle, mAuthor, mDate, mDescription;
-    ImageView mIcon, mScreenshot;
-    Button mSourceBtn, mReleaseBtn;
-    ImageButton mDownload, mDownloadData;
+    ImageView mScreenshot;
 
     Handler cycleHandler = new Handler();
     Runnable cycleRunnable = new Runnable() {
@@ -49,53 +44,37 @@ public class HomebrewDetails extends AppCompatActivity {
         cItem = (HomebrewItem)getIntent().getSerializableExtra("ITEM");
         assert cItem != null;
 
-        Name = cItem.getName();
-        IconUrl = cItem.getIconUrl();
-        Version = cItem.getVersion();
-        Author = cItem.getAuthor();
-        LongDescription = cItem.getLongDescription();
-        SourceUrl = cItem.getSourceUrl();
-        ReleaseUrl = cItem.getReleaseUrl();
-        Date = cItem.getDateString();
-        Url = cItem.getUrl();
-        DataUrl = cItem.getDataUrl();
+        String SourceUrl = cItem.getSourceUrl();
+        String ReleaseUrl = cItem.getReleaseUrl();
+        String DataUrl = cItem.getDataUrl();
         ScreenshotsUrl = cItem.getScreenshotsUrl();
 
-        mTitle = findViewById(R.id.textview_title);
-        mDate = findViewById(R.id.textview_date);
-        mAuthor = findViewById(R.id.textview_author);
-        mDescription = findViewById(R.id.textview_desc);
-        mIcon = findViewById(R.id.image);
+        Button mSourceBtn = findViewById(R.id.button_source);
+        Button mReleaseBtn = findViewById(R.id.button_release);
+        ImageButton mDownload = findViewById(R.id.download);
+        ImageButton mDownloadData = findViewById(R.id.downloadData);
         mScreenshot = findViewById(R.id.screenshot);
-        mSourceBtn = findViewById(R.id.button_source);
-        mReleaseBtn = findViewById(R.id.button_release);
-        mDownload = findViewById(R.id.download);
-        mDownloadData = findViewById(R.id.downloadData);
 
-        mTitle.setText(String.format("%s %s", Name, Version));
-        mDate.setText(Date);
-        mAuthor.setText(Author);
-        mDescription.setText(LongDescription);
-        Picasso.get().load(IconUrl).fit().centerInside().transform(new CropCircleTransformation()).memoryPolicy(MemoryPolicy.NO_CACHE).into(mIcon);
+        ((TextView)findViewById(R.id.textview_title)).setText(String.format("%s %s", cItem.getName(), cItem.getVersion()));
+        ((TextView)findViewById(R.id.textview_date)).setText(cItem.getDateString());
+        ((TextView)findViewById(R.id.textview_author)).setText(cItem.getAuthor());
+        ((TextView)findViewById(R.id.textview_desc)).setText(cItem.getLongDescription());
 
-        findViewById(R.id.ll_pages).setVisibility(!(SourceUrl.equals("") && ReleaseUrl.equals("")) ? View.VISIBLE : View.GONE);
-        findViewById(R.id.line3).setVisibility(!(SourceUrl.equals("") && ReleaseUrl.equals("")) ? View.VISIBLE : View.GONE);
+        Picasso.get().load(cItem.getIconUrl()).fit().centerInside().transform(new CropCircleTransformation()).memoryPolicy(MemoryPolicy.NO_CACHE).into((ImageView)findViewById(R.id.image));
+
+        int pagesVisibility = !(SourceUrl.equals("") && ReleaseUrl.equals("")) ? View.VISIBLE : View.GONE;
+        findViewById(R.id.ll_pages).setVisibility(pagesVisibility);
+        findViewById(R.id.line3).setVisibility(pagesVisibility);
         mSourceBtn.setVisibility(!SourceUrl.equals("") ? View.VISIBLE : View.GONE);
         mReleaseBtn.setVisibility(!ReleaseUrl.equals("") ? View.VISIBLE : View.GONE);
 
         mSourceBtn.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(SourceUrl))));
         mReleaseBtn.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ReleaseUrl))));
 
-        mDownload.setOnClickListener(v -> {
-            String filename = Name + ".vpk";
-            DownloadUtils.VHBBDownloadManager(this, Uri.parse(Url), filename);
-        });
+        mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(this, Uri.parse(cItem.getUrl()), cItem.getName() + ".vpk"));
 
         mDownloadData.setVisibility(!DataUrl.equals("") ? View.VISIBLE : View.GONE);
-        if (!DataUrl.equals("")) mDownloadData.setOnClickListener(v -> {
-            String filename = DataUrl.substring(DataUrl.lastIndexOf("/") + 1);
-            DownloadUtils.VHBBDownloadManager(this, Uri.parse(Url), filename);
-        });
+        if (!DataUrl.equals("")) mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(this, Uri.parse(DataUrl), DataUrl.substring(DataUrl.lastIndexOf("/") + 1)));
 
         if (ScreenshotsUrl != null)
             if (ScreenshotsUrl.length == 1) Picasso.get().load(ScreenshotsUrl[0]).fit().centerInside().memoryPolicy(MemoryPolicy.NO_CACHE).into(mScreenshot);

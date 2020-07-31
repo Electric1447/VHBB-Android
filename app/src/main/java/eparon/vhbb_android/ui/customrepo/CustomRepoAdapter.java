@@ -41,24 +41,17 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
     public void onBindViewHolder (@NonNull CustomRepoAdapter.ViewHolder holder, int position) {
         CustomRepoItem currentItem = mCustomRepoList.get(position);
 
-        String nameID = currentItem.getName();
-        String filenameID = currentItem.getFilename();
-        String dataFilenameID = currentItem.getDataFilename();
-        String versionID = currentItem.getVersion();
-        String authorID = currentItem.getAuthor();
-        String descriptionID = currentItem.getDescription();
-        String urlID = currentItem.getUrl();
         String dataUrlID = currentItem.getDataUrl();
         String dateID = currentItem.getDate();
 
-        holder.mTitle.setText(String.format("%s %s", nameID, versionID));
-        holder.mAuthor.setText(authorID);
-        holder.mDescription.setText(descriptionID);
+        holder.mTitle.setText(String.format("%s %s", currentItem.getName(), currentItem.getVersion()));
+        holder.mAuthor.setText(currentItem.getAuthor());
+        holder.mDescription.setText(currentItem.getDescription());
 
         holder.mDate.setText(String.format("(%s)", dateID));
         holder.mDate.setVisibility(!dateID.equals("") ? View.VISIBLE : View.GONE);
 
-        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID));
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)holder.mDescription.getLayoutParams();
@@ -68,7 +61,7 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
                 0);
         holder.mDescription.setLayoutParams(lp);
 
-        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), dataFilenameID));
+        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), currentItem.getDataFilename()));
     }
 
     @Override

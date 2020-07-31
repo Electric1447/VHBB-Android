@@ -44,26 +44,18 @@ public class ExtrasAdapter extends RecyclerView.Adapter<ExtrasAdapter.ViewHolder
     public void onBindViewHolder (@NonNull ExtrasAdapter.ViewHolder holder, int position) {
         ExtrasItem currentItem = mExtrasList.get(position);
 
-        String nameID = currentItem.getName();
-        String filenameID = currentItem.getFilename();
-        String dataFilenameID = currentItem.getDataFilename();
-        String versionID = currentItem.getVersion();
-        String authorID = currentItem.getAuthor();
-        String descriptionID = currentItem.getDescription();
-        String urlID = currentItem.getUrl();
         String dataUrlID = currentItem.getDataUrl();
         String dateID = currentItem.getDate();
-        String iconID = currentItem.getIcon();
 
-        holder.mTitle.setText(String.format("%s %s", nameID, versionID));
-        holder.mAuthor.setText(authorID);
-        holder.mDescription.setText(descriptionID);
-        Picasso.get().load(iconID).fit().centerInside().into(holder.mIcon);
+        holder.mTitle.setText(String.format("%s %s", currentItem.getName(), currentItem.getVersion()));
+        holder.mAuthor.setText(currentItem.getAuthor());
+        holder.mDescription.setText(currentItem.getDescription());
+        Picasso.get().load(currentItem.getIcon()).fit().centerInside().into(holder.mIcon);
 
         holder.mDate.setText(String.format("(%s)", dateID));
         holder.mDate.setVisibility(!dateID.equals("") ? View.VISIBLE : View.GONE);
 
-        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID));
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)holder.mDescription.getLayoutParams();
@@ -73,7 +65,7 @@ public class ExtrasAdapter extends RecyclerView.Adapter<ExtrasAdapter.ViewHolder
                 0);
         holder.mDescription.setLayoutParams(lp);
 
-        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), dataFilenameID));
+        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), currentItem.getDataFilename()));
     }
 
     @Override

@@ -48,27 +48,19 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
     public void onBindViewHolder (@NonNull ViewHolder holder, int position) {
         HomebrewItem currentItem = mHomebrewList.get(position);
 
-        String nameID = currentItem.getName();
-        String iconID = currentItem.getIconUrl();
-        String versionID = currentItem.getVersion();
-        String authorID = currentItem.getAuthor();
-        String descriptionID = currentItem.getDescription();
-        String dateID = currentItem.getDateString();
-        int downloadsID = currentItem.getDownloads();
-        String urlID = currentItem.getUrl();
-        String dataUrlID = currentItem.getDataUrl();
-
-        holder.mTitle.setText(String.format("%s %s", nameID, versionID));
-        holder.mAuthor.setText(authorID);
-        holder.mDescription.setText(descriptionID);
-        holder.mDate.setText(String.format("(%s)", dateID));
-        holder.mDownloads.setText(String.format(Locale.getDefault(), "%dDLs", downloadsID));
-        Picasso.get().load(iconID).fit().centerInside().into(holder.mIcon);
+        holder.mTitle.setText(String.format("%s %s", currentItem.getName(), currentItem.getVersion()));
+        holder.mAuthor.setText(currentItem.getAuthor());
+        holder.mDescription.setText(currentItem.getDescription());
+        holder.mDate.setText(String.format("(%s)", currentItem.getDateString()));
+        holder.mDownloads.setText(String.format(Locale.getDefault(), "%dDLs", currentItem.getDownloads()));
+        Picasso.get().load(currentItem.getIconUrl()).fit().centerInside().into(holder.mIcon);
 
         holder.mDownload.setOnClickListener(v -> {
-            String filename = nameID + ".vpk";
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filename);
+            String filename = currentItem.getName() + ".vpk";
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), filename);
         });
+
+        String dataUrlID = currentItem.getDataUrl();
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)holder.mDescription.getLayoutParams();

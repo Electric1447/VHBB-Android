@@ -37,18 +37,11 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
     public void onBindViewHolder (@NonNull ViewHolder holder, int position) {
         PluginsItem currentItem = mPluginsList.get(position);
 
-        String nameID = currentItem.getName();
-        String filenameID = currentItem.getFilename();
-        String versionID = currentItem.getVersion();
-        String authorID = currentItem.getAuthor();
-        String descriptionID = currentItem.getDescription();
-        String urlID = currentItem.getUrl();
+        holder.mTitle.setText(String.format("%s %s", currentItem.getName(), currentItem.getVersion()));
+        holder.mAuthor.setText(currentItem.getAuthor());
+        holder.mDescription.setText(currentItem.getDescription());
 
-        holder.mTitle.setText(String.format("%s %s", nameID, versionID));
-        holder.mAuthor.setText(authorID);
-        holder.mDescription.setText(descriptionID);
-
-        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID));
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
     }
 
     @Override
