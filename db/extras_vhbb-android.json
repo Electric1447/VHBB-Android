@@ -3,12 +3,12 @@
 		"name": "Retroarch",
 		"filename": "RetroArch.vpk",
 		"data_filename": "RetroArch_data.7z",
-		"version": "v1.8.8",
+		"version": "v1.8.9",
 		"author": "Libretro Team",
 		"description": "Collection of emulators for various platforms.",
-		"url": "https://buildbot.libretro.com/stable/1.8.8/playstation/vita/RetroArch.vpk",
-		"data_url": "https://buildbot.libretro.com/stable/1.8.8/playstation/vita/RetroArch_data.7z",
-		"date": "27/05/2020",
+		"url": "https://buildbot.libretro.com/stable/1.8.9/playstation/vita/RetroArch.vpk",
+		"data_url": "https://buildbot.libretro.com/stable/1.8.9/playstation/vita/RetroArch_data.7z",
+		"date": "19/06/2020",
 		"icon": "https://rinnegatamante.it/vitadb/icons/d2e291dcd6bc6b02a9f808e6d41f84281258967300fee882c6fa6c81c369bd43.png"
 	},
 	{
@@ -118,6 +118,18 @@
 		"data_url": "",
 		"date": "23/05/2019",
 		"icon": "https://rinnegatamante.it/vitadb/icons/63af1b0fe121e2e9de3fe8e9b8668aec095bb44b5c1697be40f10b59df133e6f.png"
+	},
+	{
+		"name": "TriggerRemap Configurator",
+		"filename": "TriggerRemap.vpk",
+		"data_filename": "",
+		"version": "v1.0",
+		"author": "Emiougus",
+		"description": "Configurator app for TriggerRemap plugin.",
+		"url": "https://github.com/Emiougus/TriggerRemap/releases/download/v1.0/TriggerRemap.vpk",
+		"data_url": "",
+		"date": "18/07/2020",
+		"icon": "https://rinnegatamante.it/vitadb/icons/18746b487153dc1ca3d728ce57b841b6e8faeca65a0900aa46864f73d07642c8.png"
 	},
 	{
 		"name": "TubeVita",

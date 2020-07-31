@@ -528,12 +528,12 @@
 		"url": "https://github.com/dots-tb/reF00D/releases/download/1.0/reF00D.skprx"
 	},
 	{
-		"name": "remaPSV",
-		"filename": "remaPSV.zip",
-		"version": "v1.1",
-		"author": "Rinnegatamante",
+		"name": "remaPSV2",
+		"filename": "remaPSV2.zip",
+		"version": "v2.0.1",
+		"author": "Mer1e & Rinnegatamante & S1ngyy",
 		"description": "Remap plugin for PSVITA/PSTV",
-		"url": "https://dl.coolatoms.org/vitadb/remaPSV.zip"
+		"url": "https://dl.coolatoms.org/vitadb/remaPSV2.zip"
 	},
 	{
 		"name": "rePatch reDux0",
@@ -640,6 +640,14 @@
 		"url": "https://github.com/GrapheneCt/TransparentImpose/releases/download/v1.0/TrImpose.suprx"
 	},
 	{
+		"name": "TriggerRemap",
+		"filename": "TriggerRemap.suprx",
+		"version": "v1.0",
+		"author": "Emiougus",
+		"description": "Remaps L2/R2 to rear touchpad zones.",
+		"url": "https://github.com/Emiougus/TriggerRemap/releases/download/v1.0/TriggerRemap.suprx"
+	},
+	{
 		"name": "TropHAX",
 		"filename": "trophax2.0.suprx",
 		"version": "v2.0",
@@ -666,26 +674,26 @@
 	{
 		"name": "udcd_uvc",
 		"filename": "udcd_uvc.skprx",
-		"version": "v1.5",
+		"version": "v1.6",
 		"author": "xerpi",
 		"description": "PSVita UDCD USB Video Class plugin",
-		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.5/udcd_uvc.skprx"
+		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.6/udcd_uvc.skprx"
 	},
 	{
 		"name": "udcd_uvc LCD",
 		"filename": "udcd_uvc_lcd_off.skprx",
-		"version": "v1.5",
+		"version": "v1.6",
 		"author": "xerpi",
 		"description": "PSVita UDCD USB Video Class plugin",
-		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.5/udcd_uvc_lcd_off.skprx"
+		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.6/udcd_uvc_lcd_off.skprx"
 	},
 	{
 		"name": "udcd_uvc OLED",
 		"filename": "udcd_uvc_oled_off.skprx",
-		"version": "v1.5",
+		"version": "v1.6",
 		"author": "xerpi",
 		"description": "PSVita UDCD USB Video Class plugin",
-		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.5/udcd_uvc_oled_off.skprx"
+		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.6/udcd_uvc_oled_off.skprx"
 	},
 	{
 		"name": "usbmc (only for PSTV)",
@@ -734,6 +742,14 @@
 		"author": "joel16",
 		"description": "A simple plugin that displays the current battery percentage on your PS VITA",
 		"url": "https://github.com/joel16/VITABattery/releases/download/1.4/batteryPercent.suprx"
+	},
+	{
+		"name": "VITABatteryPlus",
+		"filename": "vitabatteryplus.suprx",
+		"version": "v1.5",
+		"author": "Electric1447 & joel16",
+		"description": "A simple plugin that displays the current battery percentage on your PS VITA",
+		"url": "https://github.com/Electric1447/VITABatteryPlus/releases/download/1.5/vitabatteryplus.suprx"
 	},
 	{
 		"name": "Vita-BootSound",
