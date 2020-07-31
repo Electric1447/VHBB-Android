@@ -2,11 +2,8 @@ package eparon.vhbb_android.ui.cbpsdb;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +23,8 @@ import java.util.ArrayList;
 
 import eparon.vhbb_android.Constants.CBPSDB;
 import eparon.vhbb_android.Constants.VHBBAndroid;
-import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.R;
+import eparon.vhbb_android.Utils.DownloadUtils;
 import eparon.vhbb_android.Utils.NetworkUtils;
 import eparon.vhbb_android.Utils.PermissionUtils;
 
@@ -93,9 +90,6 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(urlID);
-
             String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
             String filenameExtension = filename.substring(filename.lastIndexOf(".")).toLowerCase();
 
@@ -112,16 +106,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
                 }
             }
 
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filename)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
-
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filename);
         });
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("None") ? View.VISIBLE : View.GONE);
@@ -135,22 +120,10 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(dataUrlID);
-
             String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
             filename = filename.substring(0, filename.lastIndexOf(".")) + "-data.zip";
 
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filename)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
-
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), filename);
         });
     }
 

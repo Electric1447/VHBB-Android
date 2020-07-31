@@ -1,9 +1,13 @@
 package eparon.vhbb_android;
 
+import java.io.Serializable;
+
 /**
  * This class is the base for the different items in the app.
  */
-public class BaseItem {
+public class BaseItem implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String Name;            // Item's name
     private String Filename;        // Item's filename with extension

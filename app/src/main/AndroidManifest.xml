@@ -35,6 +35,10 @@
             android:theme="@style/SettingsTheme"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".ui.homebrew.HomebrewDetails"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

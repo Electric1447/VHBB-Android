@@ -2,11 +2,8 @@ package eparon.vhbb_android.ui.plugins;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.R;
+import eparon.vhbb_android.Utils.DownloadUtils;
 import eparon.vhbb_android.Utils.NetworkUtils;
 import eparon.vhbb_android.Utils.PermissionUtils;
 
@@ -69,19 +66,7 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(urlID);
-
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filenameID)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filenameID);
-
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID);
         });
     }
 

@@ -23,9 +23,11 @@ public class HomebrewItem extends BaseItem {
     private int Downloads;
     private long Size, DataSize;
     private Date Date;
+    private String[] ScreenshotsUrl;
 
-    public HomebrewItem (String name, String iconUrl, String version, String author, String desc, String longDesc, String date, String srcUrl, String relUrl, String url, String dataUrl, int type, int id, int downloads, long size, long dataSize) {
+    public HomebrewItem (String name, String iconUrl, String version, String author, String desc, String longDesc, String date, String srcUrl, String relUrl, String url, String dataUrl, String screenshots, int type, int id, int downloads, long size, long dataSize) {
         super(name, "", version, author, desc, url);
+
         this.IconUrl = String.format("%s%s", VitaDB.ICONS_PARENT_URL, iconUrl);
         this.LongDescription = longDesc;
         this.SourceUrl = srcUrl;
@@ -37,6 +39,13 @@ public class HomebrewItem extends BaseItem {
         this.Size = size;
         this.DataSize = dataSize;
         this.setDate(date);
+
+        if (!screenshots.equals("")) {
+            String[] scArray = screenshots.split(";");
+            for (int i = 0; i < scArray.length; i++)
+                scArray[i] = String.format("%s/%s", VitaDB.PARENT_URL, scArray[i]);
+            this.ScreenshotsUrl = scArray;
+        }
     }
 
     public String getIconUrl () {
@@ -100,6 +109,10 @@ public class HomebrewItem extends BaseItem {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public String[] getScreenshotsUrl () {
+        return ScreenshotsUrl;
     }
 
 }

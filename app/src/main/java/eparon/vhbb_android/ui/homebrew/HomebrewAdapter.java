@@ -2,17 +2,16 @@ package eparon.vhbb_android.ui.homebrew;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +27,7 @@ import java.util.Locale;
 
 import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.R;
+import eparon.vhbb_android.Utils.DownloadUtils;
 import eparon.vhbb_android.Utils.NetworkUtils;
 import eparon.vhbb_android.Utils.PermissionUtils;
 
@@ -80,21 +80,9 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(urlID);
-
             String filename = nameID + ".vpk";
 
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filename)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
-
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filename);
         });
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
@@ -114,21 +102,15 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(dataUrlID);
-
             String filename = dataUrlID.substring(dataUrlID.lastIndexOf("/") + 1);
 
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filename)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), filename);
+        });
 
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+        holder.mContainer.setOnClickListener(v -> {
+            Intent detailsIntent = new Intent(mActivity, HomebrewDetails.class);
+            detailsIntent.putExtra("ITEM", currentItem);
+            mActivity.startActivity(detailsIntent);
         });
     }
 
@@ -141,6 +123,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         public TextView mTitle, mAuthor, mDescription, mDate, mDownloads;
         public ImageButton mDownload, mDownloadData;
         public ImageView mIcon;
+        public LinearLayout mContainer;
 
         public ViewHolder (View itemView) {
             super(itemView);
@@ -152,6 +135,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
             mDownload = itemView.findViewById(R.id.download);
             mDownloadData = itemView.findViewById(R.id.downloadData);
             mIcon = itemView.findViewById(R.id.image);
+            mContainer = itemView.findViewById(R.id.ll_main);
         }
     }
 

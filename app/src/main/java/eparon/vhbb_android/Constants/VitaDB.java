@@ -22,6 +22,7 @@ public class VitaDB {
     public static final String JSON_DATA_SIZE           = "data_size";
     public static final String JSON_URL                 = "url";
     public static final String JSON_DATA                = "data";
+    public static final String JSON_SCREENSHOTS         = "screenshots";
     //endregion
 
 

@@ -21,6 +21,12 @@
     <string name="menu_utilities">Utilities</string>
     <string name="menu_emulators">Emulators</string>
 
+    <string name="details_author">Author:</string>
+    <string name="details_date">Release Date:</string>
+    <string name="details_source">Source Page</string>
+    <string name="details_release">Release Page</string>
+    <string name="details_desc">Description:</string>
+
     <string name="customrepo_refresh_title">Please enter a valid repo url.</string>
     <string name="customrepo_refresh">Refresh</string>
 

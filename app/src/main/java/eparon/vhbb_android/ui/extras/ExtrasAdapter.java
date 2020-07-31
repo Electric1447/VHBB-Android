@@ -2,11 +2,8 @@ package eparon.vhbb_android.ui.extras;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +22,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import eparon.vhbb_android.Constants.VitaDB;
 import eparon.vhbb_android.R;
+import eparon.vhbb_android.Utils.DownloadUtils;
 import eparon.vhbb_android.Utils.NetworkUtils;
 import eparon.vhbb_android.Utils.PermissionUtils;
 
@@ -81,19 +78,7 @@ public class ExtrasAdapter extends RecyclerView.Adapter<ExtrasAdapter.ViewHolder
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(urlID);
-
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(filenameID)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filenameID);
-
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filenameID);
         });
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
@@ -113,19 +98,7 @@ public class ExtrasAdapter extends RecyclerView.Adapter<ExtrasAdapter.ViewHolder
                 return;
             }
 
-            DownloadManager downloadmanager = (DownloadManager)v.getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(dataUrlID);
-
-            DownloadManager.Request request = new DownloadManager.Request(uri)
-                    .setTitle(dataFilenameID)
-                    .setDescription("Downloading...")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setVisibleInDownloadsUi(true)
-                    .addRequestHeader(VitaDB.UA_REQUEST_HEADER, VitaDB.UA_REQUEST_VALUE) // Set a valid user-agent for the requests.
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, dataFilenameID);
-
-            assert downloadmanager != null;
-            downloadmanager.enqueue(request);
+            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), dataFilenameID);
         });
     }
 
