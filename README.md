@@ -15,4 +15,4 @@ Vita Homebrew Browser client for Android
 - Internet connection
 
 ## Screenshots
-<img src="screenshots/screenshot_homebrew.png" width="400"> &nbsp; <img src="screenshots/screenshot_plugins.png" width="400"> &nbsp; <img src="screenshots/screenshot_cbpsdb.png" width="400"> &nbsp; <img src="screenshots/screenshot_extras.png" width="400"> &nbsp; <img src="screenshots/screenshot_customrepo.png" width="400"> &nbsp; <img src="screenshots/screenshot_drawer.png" width="400">
+<img src="screenshots/screenshot_homebrew.png" width="400"> &nbsp; <img src="screenshots/screenshot_plugins.png" width="400"> &nbsp; <img src="screenshots/screenshot_cbpsdb.png" width="400"> &nbsp; <img src="screenshots/screenshot_extras.png" width="400"> &nbsp; <img src="screenshots/screenshot_customrepo.png" width="400"> &nbsp; <img src="screenshots/screenshot_drawer.png" width="400"> &nbsp; <img src="screenshots/screenshot_details.png" width="400">
