@@ -67,14 +67,14 @@ public class CustomRepoFragment extends Fragment {
     private void showDialog () {
         mCardView.setVisibility(View.GONE);
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.repoAlertDialogStyle);
-        builder.setTitle("Repository URL:");
+        builder.setTitle(getString(R.string.customrepo_dialog_title));
 
         final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
         builder.setView(input);
 
-        builder.setPositiveButton("OK", (dialog, which) -> jsonParse(input.getText().toString()));
-        builder.setNegativeButton("Cancel", (dialog, which) -> {
+        builder.setPositiveButton(getString(R.string.ok), (dialog, which) -> jsonParse(input.getText().toString()));
+        builder.setNegativeButton(getString(R.string.cancel), (dialog, which) -> {
             dialog.cancel();
             mCardView.setVisibility(View.VISIBLE);
         });
@@ -114,7 +114,7 @@ public class CustomRepoFragment extends Fragment {
                     }
                 }, error -> {
             mCardView.setVisibility(View.VISIBLE);
-            Toast.makeText(getContext(), "Invalid Repo URL", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.err_repo_invalid_url), Toast.LENGTH_SHORT).show();
         });
         mQueue.add(request);
     }

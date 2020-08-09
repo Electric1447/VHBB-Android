@@ -55,7 +55,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         holder.mDownloads.setText(String.format(Locale.getDefault(), "%dDLs", currentItem.getDownloads()));
         Picasso.get().load(currentItem.getIconUrl()).fit().centerInside().into(holder.mIcon);
 
-        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getName() + ".vpk"));
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getName() + ".vpk"));
 
         String dataUrlID = currentItem.getDataUrl();
 
@@ -67,7 +67,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
                 0);
         holder.mDescription.setLayoutParams(lp);
 
-        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), dataUrlID.substring(dataUrlID.lastIndexOf("/") + 1)));
+        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(dataUrlID), dataUrlID.substring(dataUrlID.lastIndexOf("/") + 1)));
 
         holder.mContainer.setOnClickListener(v -> {
             Intent detailsIntent = new Intent(mActivity, HomebrewDetails.class);

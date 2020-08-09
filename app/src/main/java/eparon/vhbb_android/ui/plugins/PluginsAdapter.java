@@ -1,5 +1,6 @@
 package eparon.vhbb_android.ui.plugins;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +19,12 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHolder> {
 
+    private Activity mActivity;
     private ArrayList<PluginsItem> mPluginsList;
     private ArrayList<PluginsItem> mPluginsListFull;
 
-    public PluginsAdapter (ArrayList<PluginsItem> pluginsList) {
+    public PluginsAdapter (Activity activity, ArrayList<PluginsItem> pluginsList) {
+        this.mActivity = activity;
         this.mPluginsList = pluginsList;
         this.mPluginsListFull = new ArrayList<>(mPluginsList);
     }
@@ -41,7 +44,7 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
         holder.mAuthor.setText(currentItem.getAuthor());
         holder.mDescription.setText(currentItem.getDescription());
 
-        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
     }
 
     @Override

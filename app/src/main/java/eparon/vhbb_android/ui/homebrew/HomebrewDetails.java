@@ -71,10 +71,10 @@ public class HomebrewDetails extends AppCompatActivity {
         mSourceBtn.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(SourceUrl))));
         mReleaseBtn.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ReleaseUrl))));
 
-        mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(this, Uri.parse(cItem.getUrl()), cItem.getName() + ".vpk"));
+        mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(this, this, Uri.parse(cItem.getUrl()), cItem.getName() + ".vpk"));
 
         mDownloadData.setVisibility(!DataUrl.equals("") ? View.VISIBLE : View.GONE);
-        if (!DataUrl.equals("")) mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(this, Uri.parse(DataUrl), DataUrl.substring(DataUrl.lastIndexOf("/") + 1)));
+        if (!DataUrl.equals("")) mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(this, this, Uri.parse(DataUrl), DataUrl.substring(DataUrl.lastIndexOf("/") + 1)));
 
         if (ScreenshotsUrl != null)
             if (ScreenshotsUrl.length == 1) Picasso.get().load(ScreenshotsUrl[0]).fit().centerInside().memoryPolicy(MemoryPolicy.NO_CACHE).into(mScreenshot);

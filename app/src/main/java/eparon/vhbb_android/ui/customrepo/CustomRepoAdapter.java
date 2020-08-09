@@ -51,7 +51,7 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
         holder.mDate.setText(String.format("(%s)", dateID));
         holder.mDate.setVisibility(!dateID.equals("") ? View.VISIBLE : View.GONE);
 
-        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
+        holder.mDownload.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(currentItem.getUrl()), currentItem.getFilename()));
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("") ? View.VISIBLE : View.GONE);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)holder.mDescription.getLayoutParams();
@@ -61,7 +61,7 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
                 0);
         holder.mDescription.setLayoutParams(lp);
 
-        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), currentItem.getDataFilename()));
+        if (!dataUrlID.equals("")) holder.mDownloadData.setOnClickListener(v -> DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(dataUrlID), currentItem.getDataFilename()));
     }
 
     @Override

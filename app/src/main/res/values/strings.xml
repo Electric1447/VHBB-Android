@@ -5,6 +5,10 @@
     <string name="nav_header_subtitle">Created by Itai Levin (Electric1447)</string>
     <string name="nav_header_desc">Navigation header</string>
 
+    <string name="err_network_not_available">Network not available</string>
+    <string name="err_repo_invalid_url">Invalid Repo URL</string>
+    <string name="err_parse_file_extension">Error while parsing file extension</string>
+
     <string name="menu_homebrew">Homebrew</string>
     <string name="menu_homebrew_vitadb">Homebrew (VitaDB)</string>
     <string name="menu_plugins">Plugins</string>
@@ -29,9 +33,16 @@
 
     <string name="customrepo_refresh_title">Please enter a valid repo url.</string>
     <string name="customrepo_refresh">Refresh</string>
+    <string name="customrepo_dialog_title">Repository URL:</string>
 
     <string name="prefs_cache_title">Clear Cache</string>
     <string name="prefs_cache_summery">Clear the application\'s cache.</string>
 
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     <string name="about">About</string>
+    <string name="downloading">Downloading…</string>
+
+    <string name="permutils_title">Permission needed</string>
+    <string name="permutils_message">Storage permission is needed to download files</string>
 </resources>

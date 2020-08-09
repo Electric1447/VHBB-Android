@@ -1,5 +1,6 @@
 package eparon.vhbb_android.ui.cbpsdb;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +25,12 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder> {
 
+    private Activity mActivity;
     private ArrayList<CBPSDBItem> mCBPSDBList;
     private ArrayList<CBPSDBItem> mCBPSDBListFull;
 
-    public CBPSDBAdapter (ArrayList<CBPSDBItem> cbpsdbList) {
+    public CBPSDBAdapter (Activity activity, ArrayList<CBPSDBItem> cbpsdbList) {
+        this.mActivity = activity;
         this.mCBPSDBList = cbpsdbList;
         this.mCBPSDBListFull = new ArrayList<>(mCBPSDBList);
     }
@@ -84,11 +87,11 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
                     filename = idID + ".vpk";
                 } else {
                     filename = idID;
-                    Toast.makeText(v.getContext(), "Error while parsing file extension", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), v.getContext().getString(R.string.err_parse_file_extension), Toast.LENGTH_SHORT).show();
                 }
             }
 
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(urlID), filename);
+            DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(urlID), filename);
         });
 
         holder.mDownloadData.setVisibility(!dataUrlID.equals("None") ? View.VISIBLE : View.GONE);
@@ -97,7 +100,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
             String filename = urlID.substring(urlID.lastIndexOf("/") + 1);
             filename = filename.substring(0, filename.lastIndexOf(".")) + "-data.zip";
 
-            DownloadUtils.VHBBDownloadManager(v.getContext(), Uri.parse(dataUrlID), filename);
+            DownloadUtils.VHBBDownloadManager(mActivity, v.getContext(), Uri.parse(dataUrlID), filename);
         });
     }
 
