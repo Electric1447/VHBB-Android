@@ -3,12 +3,12 @@
 		"name": "Retroarch",
 		"filename": "RetroArch.vpk",
 		"data_filename": "RetroArch_data.7z",
-		"version": "v1.8.9",
+		"version": "v1.9.0",
 		"author": "Libretro Team",
 		"description": "Collection of emulators for various platforms.",
-		"url": "https://buildbot.libretro.com/stable/1.8.9/playstation/vita/RetroArch.vpk",
-		"data_url": "https://buildbot.libretro.com/stable/1.8.9/playstation/vita/RetroArch_data.7z",
-		"date": "19/06/2020",
+		"url": "https://buildbot.libretro.com/stable/1.9.0/playstation/vita/RetroArch.vpk",
+		"data_url": "https://buildbot.libretro.com/nightly/playstation/vita/2020-09-07_RetroArch_data.7z",
+		"date": "09/08/2020",
 		"icon": "https://rinnegatamante.it/vitadb/icons/d2e291dcd6bc6b02a9f808e6d41f84281258967300fee882c6fa6c81c369bd43.png"
 	},
 	{
@@ -118,6 +118,18 @@
 		"data_url": "",
 		"date": "23/05/2019",
 		"icon": "https://rinnegatamante.it/vitadb/icons/63af1b0fe121e2e9de3fe8e9b8668aec095bb44b5c1697be40f10b59df133e6f.png"
+	},
+	{
+		"name": "Super Mario 64 Port",
+		"filename": "sm64.vpk",
+		"data_filename": "",
+		"version": "git",
+		"author": "bythos14",
+		"description": "A port of Super Mario 64 for the PS Vita",
+		"url": "https://gitlab.com/SilicaAndPina/cbpsdb/-/raw/master/vpk/SM6400001.vpk",
+		"data_url": "",
+		"date": "02/09/2020",
+		"icon": "https://gitlab.com/SilicaAndPina/cbpsdb/-/raw/master/icon0/SM6400001_icon0.png"
 	},
 	{
 		"name": "TriggerRemap Configurator",

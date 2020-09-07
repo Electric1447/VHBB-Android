@@ -248,6 +248,14 @@
 		"url": "https://bitbucket.org/SilicaAndPina/fuckpsse/downloads/FuckPSSEv1.1.suprx"
 	},
 	{
+		"name": "HonRipper",
+		"filename": "HonRipper.suprx",
+		"version": "v1.0",
+		"author": "GrapheneCt",
+		"description": "Plugin for PS Vita that allows to extract data from .MNH books.",
+		"url": "https://github.com/GrapheneCt/HonRipper/releases/download/v1.0/HonRipper.suprx"
+	},
+	{
 		"name": "InfiniteNet",
 		"filename": "InfiniteNet.suprx",
 		"version": "v1.0",
@@ -494,6 +502,14 @@
 		"author": "GrapheneCt",
 		"description": "High quality screenshot plugin for PS Vita.",
 		"url": "https://github.com/GrapheneCt/QAscreenshot/releases/download/v1.1/QAscreenshot.suprx"
+	},
+	{
+		"name": "Quick Menu Plus",
+		"filename": "quickmenuplus.suprx",
+		"version": "v2.0.0",
+		"author": "cuevavirus",
+		"description": "Quick Menu Plus merges Quick Power, Quick Volume, and Rapidmenu, as well as adding new features.",
+		"url": "https://drive.google.com/uc?export=download&id=12SERles3auCTYkCJplWSlinzshMOpVbb"
 	},
 	{
 		"name": "Quick Power",
