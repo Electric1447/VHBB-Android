@@ -27,9 +27,9 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHolder> {
 
-    private Activity mActivity;
-    private ArrayList<HomebrewItem> mHomebrewList;
-    private ArrayList<HomebrewItem> mHomebrewListFull;
+    private final Activity mActivity;
+    private final ArrayList<HomebrewItem> mHomebrewList;
+    private final ArrayList<HomebrewItem> mHomebrewListFull;
 
     public HomebrewAdapter (Activity activity, ArrayList<HomebrewItem> homebrewList) {
         this.mActivity = activity;
@@ -107,7 +107,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         return mSearchFilter;
     }
 
-    private Filter mSearchFilter = new Filter() {
+    private final Filter mSearchFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<HomebrewItem> filteredList = new ArrayList<>();
@@ -140,7 +140,7 @@ public class HomebrewAdapter extends RecyclerView.Adapter<HomebrewAdapter.ViewHo
         return mTypeFilter;
     }
 
-    private Filter mTypeFilter = new Filter() {
+    private final Filter mTypeFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<HomebrewItem> filteredList = new ArrayList<>();

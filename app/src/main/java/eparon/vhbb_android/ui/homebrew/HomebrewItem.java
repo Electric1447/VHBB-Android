@@ -14,14 +14,16 @@ import eparon.vhbb_android.Constants.VitaDB;
  */
 public class HomebrewItem extends BaseItem {
 
-    private String IconUrl;
-    private String LongDescription;
-    private String SourceUrl, ReleaseUrl;
-    private String DataUrl;
-    private int Type;
-    private int ID;
-    private int Downloads;
-    private long Size, DataSize;
+    private final String IconUrl;
+    private final String LongDescription;
+    private final String SourceUrl;
+    private final String ReleaseUrl;
+    private final String DataUrl;
+    private final int Type;
+    private final int ID;
+    private final int Downloads;
+    private final long Size;
+    private final long DataSize;
     private Date Date;
     private String[] ScreenshotsUrl;
 

@@ -9,12 +9,12 @@ public class BaseItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String Name;            // Item's name
-    private String Filename;        // Item's filename with extension
-    private String Version;         // Item's version string
-    private String Author;          // Item's author
-    private String Description;     // Short description about the item
-    private String Url;             // Item's file direct download link
+    private final String Name;            // Item's name
+    private final String Filename;        // Item's filename with extension
+    private final String Version;         // Item's version string
+    private final String Author;          // Item's author
+    private final String Description;     // Short description about the item
+    private final String Url;             // Item's file direct download link
 
     public BaseItem (String name, String filename, String version, String author, String desc, String url) {
         this.Name = name;

@@ -4,13 +4,13 @@ import eparon.vhbb_android.Constants.CBPSDB;
 
 public class CBPSDBItem {
 
-    private String ID;
-    private String Name;
-    private String Author;
-    private String Icon0;
-    private String Url;
-    private String Options;
-    private String Type;
+    private final String ID;
+    private final String Name;
+    private final String Author;
+    private final String Icon0;
+    private final String Url;
+    private final String Options;
+    private final String Type;
     private String DataUrl = "None";
 
     public CBPSDBItem (String id, String name, String author, String icon0, String url, String options, String type) {

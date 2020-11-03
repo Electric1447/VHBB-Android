@@ -20,9 +20,9 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.ViewHolder> {
 
-    private Activity mActivity;
-    private ArrayList<CustomRepoItem> mCustomRepoList;
-    private ArrayList<CustomRepoItem> mCustomRepoListFull;
+    private final Activity mActivity;
+    private final ArrayList<CustomRepoItem> mCustomRepoList;
+    private final ArrayList<CustomRepoItem> mCustomRepoListFull;
 
     public CustomRepoAdapter (Activity activity, ArrayList<CustomRepoItem> customRepoList) {
         this.mActivity = activity;
@@ -90,7 +90,7 @@ public class CustomRepoAdapter extends RecyclerView.Adapter<CustomRepoAdapter.Vi
         return mFilter;
     }
 
-    private Filter mFilter = new Filter() {
+    private final Filter mFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<CustomRepoItem> filteredList = new ArrayList<>();

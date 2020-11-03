@@ -25,9 +25,9 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder> {
 
-    private Activity mActivity;
-    private ArrayList<CBPSDBItem> mCBPSDBList;
-    private ArrayList<CBPSDBItem> mCBPSDBListFull;
+    private final Activity mActivity;
+    private final ArrayList<CBPSDBItem> mCBPSDBList;
+    private final ArrayList<CBPSDBItem> mCBPSDBListFull;
 
     public CBPSDBAdapter (Activity activity, ArrayList<CBPSDBItem> cbpsdbList) {
         this.mActivity = activity;
@@ -131,7 +131,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         return mSearchFilter;
     }
 
-    private Filter mSearchFilter = new Filter() {
+    private final Filter mSearchFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<CBPSDBItem> filteredList = new ArrayList<>();
@@ -164,7 +164,7 @@ public class CBPSDBAdapter extends RecyclerView.Adapter<CBPSDBAdapter.ViewHolder
         return mTypeFilter;
     }
 
-    private Filter mTypeFilter = new Filter() {
+    private final Filter mTypeFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<CBPSDBItem> filteredList = new ArrayList<>();

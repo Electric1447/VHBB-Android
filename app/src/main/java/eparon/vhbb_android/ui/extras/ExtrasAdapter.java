@@ -23,9 +23,9 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class ExtrasAdapter extends RecyclerView.Adapter<ExtrasAdapter.ViewHolder> {
 
-    private Activity mActivity;
-    private ArrayList<ExtrasItem> mExtrasList;
-    private ArrayList<ExtrasItem> mExtrasListFull;
+    private final Activity mActivity;
+    private final ArrayList<ExtrasItem> mExtrasList;
+    private final ArrayList<ExtrasItem> mExtrasListFull;
 
     public ExtrasAdapter (Activity activity, ArrayList<ExtrasItem> extrasList) {
         this.mActivity = activity;
@@ -97,7 +97,7 @@ public class ExtrasAdapter extends RecyclerView.Adapter<ExtrasAdapter.ViewHolder
         return mFilter;
     }
 
-    private Filter mFilter = new Filter() {
+    private final Filter mFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<ExtrasItem> filteredList = new ArrayList<>();

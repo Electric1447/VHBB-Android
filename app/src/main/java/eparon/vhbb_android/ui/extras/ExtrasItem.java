@@ -7,10 +7,10 @@ import eparon.vhbb_android.BaseItem;
  */
 public class ExtrasItem extends BaseItem {
 
-    private String DataFilename;
-    private String DataUrl;
-    private String Date;
-    private String Icon;
+    private final String DataFilename;
+    private final String DataUrl;
+    private final String Date;
+    private final String Icon;
 
     public ExtrasItem (String name, String filename, String version, String author, String desc, String url, String dataFilename, String dataUrl, String date, String icon) {
         super(name, filename, version, author, desc, url);

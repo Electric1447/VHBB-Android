@@ -1,5 +1,6 @@
 package eparon.vhbb_android.ui.homebrew;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +38,7 @@ public class HomebrewFragment extends Fragment {
     private RequestQueue mQueue;
     private BottomNavigationView mBottomNav;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_homebrew, container, false);

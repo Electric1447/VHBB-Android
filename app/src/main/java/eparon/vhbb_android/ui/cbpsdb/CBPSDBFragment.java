@@ -38,6 +38,7 @@ public class CBPSDBFragment extends Fragment {
     private ArrayList<CBPSDBItem> mCBPSDBList;
     private BottomNavigationView mBottomNav;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_cbpsdb, container, false);
@@ -71,6 +72,7 @@ public class CBPSDBFragment extends Fragment {
         return rootView;
     }
 
+    @SuppressWarnings("deprecation")
     @SuppressLint("StaticFieldLeak")
     private class DownloadFilesTask extends AsyncTask<URL, Void, List<String[]>> {
 
@@ -122,10 +124,11 @@ public class CBPSDBFragment extends Fragment {
             String[] item = result.get(i);
 
             boolean isVisible = item[CBPSDB.CVS_VISIBLE].equals("True");
+            boolean isData = item[CBPSDB.CVS_TYPE].equals(CBPSDB.TYPE_DATA);
 
             if (isVisible) {
                 mCBPSDBList.add(new CBPSDBItem(item[CBPSDB.CVS_ID], item[CBPSDB.CVS_TITLE], item[CBPSDB.CVS_CREDITS], item[CBPSDB.CVS_ICON0], item[CBPSDB.CVS_URL], item[CBPSDB.CVS_OPTIONS], item[CBPSDB.CVS_TYPE]));
-            } else {
+            } else if (isData) {
                 dataList.add(new String[] {item[CBPSDB.CVS_TITLE].substring(0, item[CBPSDB.CVS_TITLE].length() - 11), item[CBPSDB.CVS_URL]});
             }
         }

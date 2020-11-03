@@ -7,9 +7,9 @@ import eparon.vhbb_android.BaseItem;
  */
 public class CustomRepoItem extends BaseItem {
 
-    private String DataFilename;
-    private String DataUrl;
-    private String Date;
+    private final String DataFilename;
+    private final String DataUrl;
+    private final String Date;
 
     public CustomRepoItem (String name, String filename, String dataFilename, String version, String author, String desc, String url, String dataUrl, String date) {
         super(name, filename, version, author, desc, url);

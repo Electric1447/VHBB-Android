@@ -19,9 +19,9 @@ import eparon.vhbb_android.Utils.DownloadUtils;
 
 public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHolder> {
 
-    private Activity mActivity;
-    private ArrayList<PluginsItem> mPluginsList;
-    private ArrayList<PluginsItem> mPluginsListFull;
+    private final Activity mActivity;
+    private final ArrayList<PluginsItem> mPluginsList;
+    private final ArrayList<PluginsItem> mPluginsListFull;
 
     public PluginsAdapter (Activity activity, ArrayList<PluginsItem> pluginsList) {
         this.mActivity = activity;
@@ -71,7 +71,7 @@ public class PluginsAdapter extends RecyclerView.Adapter<PluginsAdapter.ViewHold
         return mFilter;
     }
 
-    private Filter mFilter = new Filter() {
+    private final Filter mFilter = new Filter() {
         @Override
         protected FilterResults performFiltering (CharSequence constraint) {
             ArrayList<PluginsItem> filteredList = new ArrayList<>();
