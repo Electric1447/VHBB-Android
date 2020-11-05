@@ -120,6 +120,14 @@
 		"url": "https://github.com/TheOfficialFloW/VitaTweaks/releases/download/CustomWarning/custom_warning.suprx"
 	},
 	{
+		"name": "dt2s",
+		"filename": "dt2s.zip",
+		"version": "v1.0",
+		"author": "joel16",
+		"description": "Double tap screen to put Vita in standby.",
+		"url": "https://dl.coolatoms.org/vitadb/dt2s.zip"
+	},
+	{
 		"name": "déjàvu: Vita SaveState Plugin",
 		"filename": "dejavu.skprx",
 		"version": "v0.1",
@@ -168,6 +176,14 @@
 		"url": "https://github.com/xerpi/ds3vita/files/1185917/ds3vita_beta_3.zip"
 	},
 	{
+		"name": "ds4touch",
+		"filename": "ds4touch.skprx",
+		"version": "v1.1.3",
+		"author": "Mer1e",
+		"description": "Adds ds4 touchpad support to PSTV/PSVita.",
+		"url": "https://github.com/MERLev/ds4Touch/releases/download/1.1.3/ds4touch.skprx"
+	},
+	{
 		"name": "ds4vita",
 		"filename": "ds4vita_1.2.zip",
 		"version": "v1.2",
@@ -198,6 +214,14 @@
 		"author": "teakhanirons",
 		"description": "This plugin provides a brick protection for Vita.",
 		"url": "https://github.com/teakhanirons/EmergencyMount/releases/download/1.0/EmergencyMount.skprx"
+	},
+	{
+		"name": "FdFix",
+		"filename": "fd_fix.skprx",
+		"version": "v1.0",
+		"author": "TheOfficialFloW",
+		"description": "Prevents filehandles invalidation by the OS.",
+		"url": "https://github.com/TheOfficialFloW/FdFix/releases/download/v1.0/fd_fix.skprx"
 	},
 	{
 		"name": "forcelang",
@@ -481,11 +505,11 @@
 	},
 	{
 		"name": "PSV-VSH Menu",
-		"filename": "vsh.suprx",
-		"version": "v3.4",
+		"filename": "vsh.zip",
+		"version": "v3.5",
 		"author": "joel16",
 		"description": "Multifunction plugin for PSVITA.",
-		"url": "https://github.com/joel16/PSV-VSH-Menu/releases/download/3.40/vsh.suprx"
+		"url": "https://dl.coolatoms.org/vitadb/vsh.zip"
 	},
 	{
 		"name": "PSVshell",
@@ -690,26 +714,26 @@
 	{
 		"name": "udcd_uvc",
 		"filename": "udcd_uvc.skprx",
-		"version": "v1.6",
+		"version": "v1.7",
 		"author": "xerpi",
 		"description": "PSVita UDCD USB Video Class plugin",
-		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.6/udcd_uvc.skprx"
+		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.7/udcd_uvc.skprx"
 	},
 	{
 		"name": "udcd_uvc LCD",
 		"filename": "udcd_uvc_lcd_off.skprx",
-		"version": "v1.6",
+		"version": "v1.7",
 		"author": "xerpi",
 		"description": "PSVita UDCD USB Video Class plugin",
-		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.6/udcd_uvc_lcd_off.skprx"
+		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.7/udcd_uvc_lcd_off.skprx"
 	},
 	{
 		"name": "udcd_uvc OLED",
 		"filename": "udcd_uvc_oled_off.skprx",
-		"version": "v1.6",
+		"version": "v1.7",
 		"author": "xerpi",
 		"description": "PSVita UDCD USB Video Class plugin",
-		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.6/udcd_uvc_oled_off.skprx"
+		"url": "https://github.com/xerpi/vita-udcd-uvc/releases/download/1.7/udcd_uvc_oled_off.skprx"
 	},
 	{
 		"name": "usbmc (only for PSTV)",
@@ -854,6 +878,14 @@
 		"author": "Princess of Sleeping",
 		"description": "A plugin to create a ram disk to mount at uma0.",
 		"url": "https://github.com/Princess-of-Sleeping/vmass/releases/download/v1.00/vmass.skprx"
+	},
+	{
+		"name": "VolLightbarCtrlWithDS4",
+		"filename": "VolLightbarCtrlWithDS4.skprx",
+		"version": "v1.1",
+		"author": "CallmeBK",
+		"description": "Change DS4 lightbar color based on battery level.",
+		"url": "https://github.com/CallmeBK/VolLightbarCtrlWithDS4/releases/download/v1.1/VolLightbarCtrlWithDS4.skprx"
 	},
 	{
 		"name": "volume_profile",
