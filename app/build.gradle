@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
     buildToolsVersion '30.0.2'
 
     defaultConfig {
         applicationId "eparon.vhbb_android"
         minSdkVersion 21
-        targetSdkVersion 30
+        //noinspection OldTargetApi
+        targetSdkVersion 29
         versionCode 13
         versionName 'beta-11'
 
@@ -47,7 +48,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'jp.wasabeef:picasso-transformations:2.2.1'
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
