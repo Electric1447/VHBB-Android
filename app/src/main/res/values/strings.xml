@@ -35,6 +35,12 @@
     <string name="customrepo_refresh">Refresh</string>
     <string name="customrepo_dialog_title">Repository URL:</string>
 
+    <string name="prefs_string">app-preferences</string>
+
+    <string name="prefs_custom_download_location_title">Custom download location</string>
+    <string name="prefs_custom_download_location_summery">Choose a custom download location.</string>
+    <string name="prefs_custom_download_location_key">download-location</string>
+
     <string name="prefs_cache_title">Clear Cache</string>
     <string name="prefs_cache_summery">Clear the application\'s cache.</string>
 

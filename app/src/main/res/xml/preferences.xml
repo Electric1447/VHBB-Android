@@ -7,6 +7,12 @@
         app:iconSpaceReserved="false">
 
         <Preference
+            android:key="change_download_location"
+            android:summary="@string/prefs_custom_download_location_summery"
+            android:title="@string/prefs_custom_download_location_title"
+            app:iconSpaceReserved="false" />
+
+        <Preference
             android:key="clear_cache"
             android:summary="@string/prefs_cache_summery"
             android:title="@string/prefs_cache_title"
