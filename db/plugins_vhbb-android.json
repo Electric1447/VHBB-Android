@@ -296,6 +296,14 @@
 		"url": "https://github.com/CelesteBlue-dev/PSVita-RE-tools/raw/master/ioPlus/ioPlus-0.1/release/ioplus.skprx"
 	},
 	{
+		"name": "kubridge",
+		"filename": "kubridge.skprx",
+		"version": "v0.1",
+		"author": "TheOfficialFloW",
+		"description": "DynaRec feature extender plugin for PSVITA.",
+		"url": "https://github.com/TheOfficialFloW/kubridge/releases/download/v0.1/kubridge.skprx"
+	},
+	{
 		"name": "LOLIcon",
 		"filename": "LOLIcon.skprx",
 		"version": "v1.0.1.1 HOTFIX A",
@@ -354,7 +362,7 @@
 	{
 		"name": "MiniVitaTV",
 		"filename": "minivitatv.zip",
-		"version": "beta 4",
+		"version": "beta 5",
 		"author": "TheOfficialFloW",
 		"description": "Connect up to 4 DS3/DS4 to your PSVITA",
 		"url": "https://drive.google.com/uc?export=download&id=11CroOFKOh09hJmPL0IiKezVs-BJ-OUE-"
@@ -608,6 +616,14 @@
 		"url": "https://bitbucket.org/SilicaAndPina/reskype/downloads/reSkype.suprx"
 	},
 	{
+		"name": "reVita",
+		"filename": "reVita.zip",
+		"version": "v1.0.7",
+		"author": "Mer1e",
+		"description": "Remap controls and apply several actions controls related.",
+		"url": "https://drive.google.com/uc?export=download&id=1BmxR3EDcqMG5Gbs2ou0hG2FQecilDiYh"
+	},
+	{
 		"name": "ScoreHax",
 		"filename": "ScoreHax.suprx",
 		"version": "v1.0",
@@ -801,11 +817,11 @@
 	},
 	{
 		"name": "Vitabright",
-		"filename": "vitabright-1.0.zip",
-		"version": "v1.0",
+		"filename": "vitabright-1.1.zip",
+		"version": "v1.1",
 		"author": "devnoname120",
 		"description": "Plugin to set PSVITA brightness.",
-		"url": "https://github.com/devnoname120/vitabright/releases/download/1.0/vitabright-1.0.zip"
+		"url": "https://github.com/devnoname120/vitabright/releases/download/1.1/vitabright-1.1.zip"
 	},
 	{
 		"name": "Vitacheat FOR 3.60",
