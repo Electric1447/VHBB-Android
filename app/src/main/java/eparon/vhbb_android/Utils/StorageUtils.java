@@ -8,6 +8,8 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
+import java.util.Objects;
+
 public class StorageUtils {
 
     public static String getPath (final Context context, final Uri uri) {
@@ -58,7 +60,7 @@ public class StorageUtils {
             }
         }
         // MediaStore (and general)
-        else if (uri.getScheme().equalsIgnoreCase("content")) {
+        else if (Objects.requireNonNull(uri.getScheme()).equalsIgnoreCase("content")) {
 
             // Return the remote address
             if (isGooglePhotosUri(uri))
@@ -98,7 +100,7 @@ public class StorageUtils {
      * @return Whether the Uri authority is ExternalStorageProvider.
      */
     public static boolean isExternalStorageDocument (Uri uri) {
-        return uri.getAuthority().equals("com.android.externalstorage.documents");
+        return Objects.equals(uri.getAuthority(), "com.android.externalstorage.documents");
     }
 
     /**
@@ -106,7 +108,7 @@ public class StorageUtils {
      * @return Whether the Uri authority is DownloadsProvider.
      */
     public static boolean isDownloadsDocument (Uri uri) {
-        return uri.getAuthority().equals("com.android.providers.downloads.documents");
+        return Objects.equals(uri.getAuthority(), "com.android.providers.downloads.documents");
     }
 
     /**
@@ -114,7 +116,7 @@ public class StorageUtils {
      * @return Whether the Uri authority is MediaProvider.
      */
     public static boolean isMediaDocument (Uri uri) {
-        return uri.getAuthority().equals("com.android.providers.media.documents");
+        return Objects.equals(uri.getAuthority(), "com.android.providers.media.documents");
     }
 
     /**
@@ -122,7 +124,7 @@ public class StorageUtils {
      * @return Whether the Uri authority is Google Photos.
      */
     public static boolean isGooglePhotosUri (Uri uri) {
-        return uri.getAuthority().equals("com.google.android.apps.photos.content");
+        return Objects.equals(uri.getAuthority(), "com.google.android.apps.photos.content");
     }
 
 }
