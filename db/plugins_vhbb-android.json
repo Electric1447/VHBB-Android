@@ -792,6 +792,14 @@
 		"url": "https://github.com/xerpi/viimote/files/1611048/viimote_1.2.zip"
 	},
 	{
+		"name": "Vita Nearest Neighbour",
+		"filename": "VitaNearestNeighbour.suprx",
+		"version": "v1.0",
+		"author": "MuxaJlbl4",
+		"description": "Texture sampling filtering overrider.",
+		"url": "https://github.com/MuxaJlbl4/Vita-Nearest-Neighbour/releases/download/1.0/VitaNearestNeighbour.suprx"
+	},
+	{
 		"name": "VITABattery",
 		"filename": "batteryPercent.suprx",
 		"version": "v1.4",
@@ -898,10 +906,10 @@
 	{
 		"name": "VolLightbarCtrlWithDS4",
 		"filename": "VolLightbarCtrlWithDS4.skprx",
-		"version": "v1.1",
+		"version": "v1.2",
 		"author": "CallmeBK",
 		"description": "Change DS4 lightbar color based on battery level.",
-		"url": "https://github.com/CallmeBK/VolLightbarCtrlWithDS4/releases/download/v1.1/VolLightbarCtrlWithDS4.skprx"
+		"url": "https://github.com/CallmeBK/VolLightbarCtrlWithDS4/releases/download/v1.2/VolLightbarCtrlWithDS4.skprx"
 	},
 	{
 		"name": "volume_profile",
